@@ -1,0 +1,116 @@
+-- ==============================
+-- 1. NGOs TABLE
+-- ==============================
+CREATE TABLE ngos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    org_pan VARCHAR(50) NOT NULL UNIQUE,
+    reg_number VARCHAR(50) NOT NULL,
+    ngo_type VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    district VARCHAR(100) NOT NULL,
+    address TEXT NOT NULL,              
+    darpan_id VARCHAR(50),
+    owner_pan VARCHAR(50) NOT NULL,
+    owner_name VARCHAR(150) NOT NULL,
+    certificate LONGBLOB,
+    acc_no VARCHAR(50) NOT NULL,
+    ifsc_code VARCHAR(20) NOT NULL,
+    status ENUM('pending','approved','rejected') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- ==============================
+-- 2. DONORS TABLE
+-- ==============================
+CREATE TABLE donors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,   -- stored as MD5 hash
+    phone VARCHAR(20),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ==============================
+-- 3. DONATIONS TABLE
+-- ==============================
+CREATE TABLE donations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    donor_id INT NOT NULL,
+    ngo_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_method ENUM('UPI','Credit Card','Debit Card','Net Banking','Cash') NOT NULL,
+    status ENUM('Pending','Completed','Cancelled') DEFAULT 'Pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (donor_id) REFERENCES donors(id) ON DELETE CASCADE,
+    FOREIGN KEY (ngo_id) REFERENCES ngos(id) ON DELETE CASCADE
+);
+
+
+
+-- ==============================
+-- 5. RESTAURANTS TABLE (optional)
+-- ==============================
+CREATE TABLE restaurants (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,                  -- Owner full name
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL,
+    restaurant_name VARCHAR(200) NOT NULL,
+    restaurant_address TEXT NOT NULL,
+    restaurant_pan VARCHAR(50) NOT NULL UNIQUE,  -- PAN number of restaurant
+    pan_fullname VARCHAR(150) NOT NULL,          -- Full name as per PAN
+    gst_number VARCHAR(30) NOT NULL UNIQUE,
+    fssai_number VARCHAR(30) NOT NULL UNIQUE,
+    fssai_expiry DATE NOT NULL,
+    fssai_image LONGBLOB,                        -- Store image as binary (or use path if needed)
+    status ENUM('Pending','Approved') DEFAULT 'Pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- ==============================
+-- 6. REQUIREMENTS TABLE (NGOs post needs)
+-- ==============================
+CREATE TABLE requirements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ngo_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    category VARCHAR(100),   -- e.g. Food, Clothes, Funds
+    quantity INT,
+    status ENUM('Open','Fulfilled','Closed') DEFAULT 'Open',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (ngo_id) REFERENCES ngos(id) ON DELETE CASCADE
+);
+-- ==============================
+-- 7.VOLUNTEERS TABLE (User Accounts)
+-- ==============================
+CREATE TABLE volunteers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fname VARCHAR(100) NOT NULL,
+    lname VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL,
+    city VARCHAR(100) DEFAULT 'Surat',
+    aadhar_number VARCHAR(20) NOT NULL UNIQUE,   -- ✅ Added field
+    aadhar_card LONGBLOB,                        -- Image upload
+    skills VARCHAR(255),
+    availability ENUM('Yes','No') DEFAULT 'Yes',
+    status ENUM('pending','approved','rejected') DEFAULT 'pending',
+    ngo_id INT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ngo_id) REFERENCES ngos(id) ON DELETE SET NULL
+);
+

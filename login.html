@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role - CharityBridge</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light-color text-text-dark">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <a href="index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+            </div>
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="text-gray-300 hover:text-primary-color">Home</a>
+                <a href="login.html" class="text-gray-300 hover:text-primary-color">Login</a>
+                <a href="register.html" class="btn btn-primary">Register</a>
+            </nav>
+            <button class="md:hidden" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-2 px-4" id="mobile-menu">
+            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
+            <a href="login.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Login</a>
+            <a href="register.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Register</a>
+        </div>
+    </header>
+
+    <!-- Role Selection -->
+    <section class="py-20 bg-light-color">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-10">
+                <h2 class="text-4xl font-bold text-center mb-12 text-primary-color">Select Your Role to Login</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
+                    <a href="admin/login.html" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-primary-color"><i class="fas fa-user-shield"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">Admin Portal</h4>
+                        <p class="text-gray-600">Manage operations and oversee community activities.</p>
+                    </a>
+                    <a href="donor/login.html" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-secondary-color"><i class="fas fa-heart"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">Become a Donor</h4>
+                        <p class="text-gray-600">Support causes you care about and make a direct impact.</p>
+                    </a>
+                    <a href="ngo/login.html" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-accent-color"><i class="fas fa-hands-helping"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">NGO Partner</h4>
+                        <p class="text-gray-600">Connect with donors and resources to amplify your mission.</p>
+                    </a>
+                    <a href="volunteer/login.html" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-[#003366]"><i class="fas fa-user-friends"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">Join as Volunteer</h4>
+                        <p class="text-gray-600">Lend your time and skills to support community initiatives.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-color text-white py-12">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const role = params.get('role');
+            if (role) {
+                // Redirect to the specific role's login page
+                window.location.href = `${role}/login.html`;
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

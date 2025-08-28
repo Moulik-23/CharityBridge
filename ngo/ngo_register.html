@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NGO Registration - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-3xl font-bold text-primary-color"
+          >CharityBridge</a
+        >
+        <nav class="space-x-6">
+          <a href="index.html" class="text-gray-600 hover:text-primary-color"
+            >Home</a
+          >
+          <a href="login.html" class="text-gray-600 hover:text-primary-color"
+            >Login</a
+          >
+          <a href="register.html" class="text-gray-600 hover:text-primary-color"
+            >Register</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- NGO Registration Form -->
+    <section class="py-12">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-10">
+          <h2 class="text-3xl font-bold text-center mb-8 text-primary-color">
+            NGO Registration
+          </h2>
+
+          <!-- Updated form to connect with PHP -->
+          <form
+            action="backend/ngo_register.php"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <!-- NGO Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-semibold mb-2">NGO Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2">Mobile Number</label>
+                <input
+                  type="tel"
+                  name="mobile"
+                  class="w-full p-3 border rounded-lg"
+                  maxlength="10"
+                  pattern="[0-9]{10}"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="password"
+                  class="block text-gray-700 text-sm font-bold mb-2"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent"
+                  placeholder="Enter a strong password"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block font-semibold mb-2"
+                  >Organization PAN Number</label
+                >
+                <input
+                  type="text"
+                  name="org_pan"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2"
+                  >Registration Number</label
+                >
+                <input
+                  type="text"
+                  name="reg_number"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2">NGO Type</label>
+                <select
+                  name="ngo_type"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                >
+                  <option value="">Select Type</option>
+                  <option value="Trust">Trust</option>
+                  <option value="Society">Society</option>
+                  <option value="Section 8 Company">Section 8 Company</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-semibold mb-2"
+                  >State of Registration</label
+                >
+                <input
+                  type="text"
+                  value="Gujarat"
+                  name="state"
+                  class="w-full p-3 border rounded-lg bg-gray-100"
+                  readonly
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2"
+                  >District of Registration</label
+                >
+                <input
+                  type="text"
+                  value="Surat"
+                  name="district"
+                  class="w-full p-3 border rounded-lg bg-gray-100"
+                  readonly
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2">Darpan ID</label>
+                <input
+                  type="text"
+                  name="darpan_id"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2">Owner PAN Number</label>
+                <input
+                  type="text"
+                  name="owner_pan"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2"
+                  >Owner Full Name (As per PAN)</label
+                >
+                <input
+                  type="text"
+                  name="owner_name"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Certificates -->
+            <div class="mt-6">
+              <label class="block font-semibold mb-2"
+                >Upload 12A or 80G Certificate</label
+              >
+              <input
+                type="file"
+                name="certificate"
+                accept="image/*,application/pdf"
+                class="w-full p-3 border rounded-lg"
+                required
+              />
+              <small class="text-gray-500"
+                >Upload any one (12A or 80G is mandatory)</small
+              >
+            </div>
+
+            <!-- Bank Details -->
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block font-semibold mb-2"
+                  >Bank Account Number</label
+                >
+                <input
+                  type="text"
+                  name="acc_no"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block font-semibold mb-2">IFSC Code</label>
+                <input
+                  type="text"
+                  name="ifsc_code"
+                  class="w-full p-3 border rounded-lg"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="w-full mt-8 bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300"
+            >
+              Register NGO
+            </button>
+          </form>
+
+          <!-- Already have an account -->
+          <p class="text-center text-gray-600 text-sm mt-6">
+            Already have an account?
+            <a
+              href="login.html"
+              class="text-primary-color hover:underline font-semibold"
+              >Login here</a
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-color text-white py-6 text-center">
+      <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+    </footer>
+    <script src="../js/ngo_script.js"></script>
+  </body>
+</html>

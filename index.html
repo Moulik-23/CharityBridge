@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Bridge</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light-color text-text-dark">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+            <nav>
+                <ul class="flex space-x-6 items-center">
+                    <li><a href="login.html" class="text-gray-600 hover:text-primary-color">Login</a></li>
+                    <li><a href="register.html" class="btn btn-primary">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-[#003366] to-[#DAA520] text-white text-center py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-6xl font-extrabold mb-5">Connecting Hearts, Changing Lives</h2>
+                <p class="text-xl mb-10 opacity-90">Empowering communities by connecting resources and needs. Join us to make a tangible difference.</p>
+                <a href="register.html" class="btn btn-secondary">Get Started Today</a>
+            </div>
+        </section>
+        <section class="py-24 bg-light-color">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl font-bold text-center mb-16 text-primary-color">Explore Our Community Roles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
+                    <a href="login.html?role=admin" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-primary-color"><i class="fas fa-user-shield"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">Admin Portal</h4>
+                        <p class="text-gray-600">Manage operations and oversee community activities.</p>
+                    </a>
+                    <a href="login.html?role=donor" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-secondary-color"><i class="fas fa-heart"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">Become a Donor</h4>
+                        <p class="text-gray-600">Support causes you care about and make a direct impact.</p>
+                    </a>
+                    <a href="login.html?role=ngo" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-accent-color"><i class="fas fa-hands-helping"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">NGO Partner</h4>
+                        <p class="text-gray-600">Connect with donors and resources to amplify your mission.</p>
+                    </a>
+                    <a href="login.html?role=volunteer" class="role-link bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 transition-all duration-300 ease-in-out">
+                        <div class="text-6xl mb-5 text-[#003366]"><i class="fas fa-user-friends"></i></div>
+                        <h4 class="text-2xl font-bold mb-3">Join as Volunteer</h4>
+                        <p class="text-gray-600">Lend your time and skills to support community initiatives.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl font-bold text-center mb-16 text-primary-color">How CharityBridge Works</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="text-7xl text-primary-color mb-6 opacity-80">1</div>
+                        <h4 class="text-2xl font-bold mb-3 text-primary-color">Register Your Role</h4>
+                        <p class="text-gray-700 leading-relaxed">Sign up easily as a Donor, NGO, Restaurant, or Volunteer to start your journey.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-7xl text-accent-color mb-6 opacity-80">2</div>
+                        <h4 class="text-2xl font-bold mb-3 text-accent-color">Connect & Collaborate</h4>
+                        <p class="text-gray-700 leading-relaxed">Seamlessly connect with others in the community to facilitate donations and support.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-7xl text-secondary-color mb-6 opacity-80">3</div>
+                        <h4 class="text-2xl font-bold mb-3 text-secondary-color">Make a Real Impact</h4>
+                        <p class="text-gray-700 leading-relaxed">Contribute to your community and witness the positive change you help create.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="bg-gray-50 py-24">
+            <div class="container mx-auto px-6">
+                <h3 class="text-4xl font-bold text-center mb-16 text-primary-color">Hear From Our Community</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div class="bg-white p-10 rounded-xl shadow-lg flex flex-col justify-between">
+                        <p class="text-gray-700 mb-6 italic text-lg">"CharityBridge has made it so easy for our restaurant to donate surplus food. It's a wonderful platform that connects us with local NGOs who can distribute the food to those in need."</p>
+                        <p class="font-bold text-primary-color">- Sumit Sharma, Restaurant Owner</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-xl shadow-lg flex flex-col justify-between">
+                        <p class="text-gray-700 mb-6 italic text-lg">"As an NGO, finding a consistent source of food donations has always been a challenge. CharityBridge has been a game-changer for us. We can now focus more on our mission."</p>
+                        <p class="font-bold text-primary-color">- John Patel, NGO Director</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-xl shadow-lg flex flex-col justify-between">
+                        <p class="text-gray-700 mb-6 italic text-lg">"I love being able to see the direct impact of my donations. CharityBridge provides transparency and allows me to connect with the causes I care about."</p>
+                        <p class="font-bold text-primary-color">- Hayat Multani, Donor</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-color text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-5 text-primary-color">CharityBridge</h4>
+                    <p class="text-gray-300">Connecting hearts, changing lives.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-5 text-primary-color">Quick Links</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-5 text-primary-color">Legal</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-5 text-primary-color">Follow Us</h4>
+                    <div class="flex space-x-6">
+                        <a href="https://example.com/facebook" class="text-gray-300 hover:text-white transition duration-300">Facebook</a>
+                        <a href="https://example.com/twitter" class="text-gray-300 hover:text-white transition duration-300">Twitter</a>
+                        <a href="https://example.com/instagram" class="text-gray-300 hover:text-white transition duration-300">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 mt-12 border-t border-gray-700 pt-8">
+                <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

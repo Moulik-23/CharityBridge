@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-3xl font-bold text-primary-color"
+          >CharityBridge</a
+        >
+        <nav class="hidden md:flex space-x-6 items-center">
+          <a href="index.html" class="text-gray-500 hover:text-primary-color"
+            >Home</a
+          >
+          <a href="login.html" class="text-gray-500 hover:text-primary-color"
+            >Login</a
+          >
+          <a href="register.html" class="btn btn-primary">Register</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Registration Role Selector -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div
+          class="max-w-lg mx-auto bg-white rounded-xl shadow-lg p-10 text-center"
+        >
+          <h2 class="text-3xl font-bold mb-8 text-primary-color">
+            Choose Your Role
+          </h2>
+
+          <div class="grid grid-cols-1 gap-6">
+            <button
+              onclick="redirectTo('ngo')"
+              class="w-full p-4 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600"
+            >
+              Register as NGO
+            </button>
+
+            <button
+              onclick="redirectTo('volunteer')"
+              class="w-full p-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700"
+            >
+              Register as Volunteer
+            </button>
+            <button
+              onclick="redirectTo('restaurant')"
+              class="w-full p-4 bg-yellow-500 text-white rounded-lg font-semibold hover:bg-yellow-600"
+            >
+              Register as Restaurant
+            </button>
+            <button
+              onclick="redirectTo('donor')"
+              class="w-full p-4 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600"
+            >
+              Register as Donor
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-color text-white py-6 text-center">
+      <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+    </footer>
+
+    <script>
+      function redirectTo(role) {
+        if (role === "ngo") {
+          window.location.href = "ngo/ngo_register.html"; // 👉 Your NGO register page
+        } else if (role === "donor") {
+          window.location.href = "donor_register.html"; // or dummy
+        } else {
+          window.location.href = "onbuild.html"; // dummy page
+        }
+      }
+    </script>
+  </body>
+</html>

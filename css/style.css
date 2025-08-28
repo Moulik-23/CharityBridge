@@ -1,0 +1,178 @@
+/* Custom styles for CharityBridge */
+
+:root {
+    --primary-color: #003366; /* Deep Blue */
+    --secondary-color: #008080; /* Teal */
+    --dark-color: #1a1a1a; /* Near Black */
+    --light-color: #FDFDFD; /* Off-white */
+    --text-dark: #333333; /* Dark Charcoal */
+    --text-light: #ffffff; /* White */
+    --accent-color: #DAA520; /* Goldenrod */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Changed font for a more stylish feel */
+    color: var(--text-dark);
+    background-color: var(--light-color);
+    line-height: 1.6; /* Improved readability */
+}
+
+/* Header */
+header {
+    border-bottom: none; /* Removed border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Softer, more pronounced shadow */
+    background-color: var(--text-light); /* White background for header */
+    padding: 1rem 0; /* Added padding */
+}
+
+header a.text-3xl {
+    font-weight: 800;
+    color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif; /* Ensure font consistency */
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.8rem; /* Slightly larger padding */
+    border-radius: 8px; /* More rounded corners */
+    font-weight: 600;
+    transition: all 0.3s ease; /* Transition for all properties */
+    text-transform: uppercase; /* Uppercase text for buttons */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color); /* Added border */
+}
+
+.btn-primary:hover {
+    background-color: #357ABD; /* Darker shade of primary */
+    color: var(--text-light);
+    border-color: #357ABD;
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4); /* Shadow on hover */
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: 2px solid var(--secondary-color); /* Added border */
+}
+
+.btn-secondary:hover {
+    background-color: #E67E22; /* Darker shade of secondary */
+    color: var(--text-light);
+    border-color: #E67E22;
+    box-shadow: 0 5px 15px rgba(255, 127, 80, 0.4); /* Shadow on hover */
+}
+
+/* Role Selection Cards */
+.role-link {
+    border: 1px solid #e0e0e0; /* Lighter border */
+    border-radius: 10px; /* More rounded corners */
+    transition: all 0.4s ease-in-out; /* Smoother transition */
+    background-color: var(--text-light); /* White background for cards */
+    padding: 1.5rem; /* More padding */
+    text-align: center; /* Center align text */
+    display: block; /* Ensure it takes full width */
+}
+
+.role-link:hover {
+    border-color: var(--accent-color); /* Accent color border on hover */
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Deeper shadow */
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.role-link i { /* Styling for icons within cards */
+    font-size: 2.5rem; /* Larger icons */
+    margin-bottom: 1rem; /* Space below icon */
+    display: block; /* Ensure icon is block for margin */
+}
+
+.role-link .fa-user-shield { color: #6610f2; } /* Purple */
+.role-link .fa-heart { color: #e83e8c; } /* Pink */
+.role-link .fa-hands-helping { color: #28a745; } /* Green */
+.role-link .fa-utensils { color: #fd7e14; } /* Orange */
+.role-link .fa-user-friends { color: #17a2b8; } /* Cyan */
+
+/* Forms */
+form {
+    margin-top: 2.5rem; /* Increased margin */
+    padding: 2rem; /* Added padding to form container */
+    background-color: var(--text-light); /* White background for form */
+    border-radius: 10px; /* Rounded corners for form */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Subtle shadow for form */
+}
+
+form label {
+    font-size: 0.9rem; /* Slightly larger font */
+    font-weight: 600;
+    color: var(--text-dark); /* Use dark text color */
+    margin-bottom: 0.5rem; /* Space below label */
+    display: block; /* Ensure label is on its own line */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form textarea { /* Added textarea */
+    width: 100%; /* Full width */
+    padding: 0.8rem; /* Padding inside input */
+    border: 1px solid #ced4da; /* Lighter border */
+    background-color: var(--light-color); /* Light background */
+    border-radius: 6px; /* Rounded input fields */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    font-size: 0.95rem; /* Font size for input text */
+}
+
+form input:focus,
+form textarea:focus { /* Added textarea focus */
+    border-color: var(--primary-color); /* Primary color border on focus */
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.25); /* Soft glow on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: var(--text-light); /* Ensure text is light */
+    padding: 2rem 0; /* Padding for footer */
+    text-align: center; /* Center align footer text */
+    margin-top: 3rem; /* Space above footer */
+}
+
+footer p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+/* Added some general styling for better appearance */
+.container {
+    max-width: 1140px; /* Max width for content */
+    margin: 0 auto; /* Center the container */
+    padding: 0 15px; /* Padding on the sides */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Consistent heading font */
+    color: var(--primary-color); /* Headings in primary color */
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    .role-link {
+        margin-bottom: 1.5rem;
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+}
