@@ -14,19 +14,19 @@
     <!-- Header -->
     <header class="bg-white shadow-md py-4 px-6">
       <div class="container mx-auto flex justify-between items-center">
-        <a href="index.html" class="text-3xl font-bold text-primary-color"
-          >CharityBridge</a
-        >
+        <a href="index.html" class="text-3xl font-bold text-primary-color">
+          CharityBridge
+        </a>
         <nav class="space-x-6">
-          <a href="index.html" class="text-gray-600 hover:text-primary-color"
-            >Home</a
-          >
-          <a href="login.html" class="text-gray-600 hover:text-primary-color"
-            >Login</a
-          >
-          <a href="register.html" class="text-gray-600 hover:text-primary-color"
-            >Register</a
-          >
+          <a href="index.html" class="text-gray-600 hover:text-primary-color">
+            Home
+          </a>
+          <a href="login.html" class="text-gray-600 hover:text-primary-color">
+            Login
+          </a>
+          <a href="register.html" class="text-gray-600 hover:text-primary-color">
+            Register
+          </a>
         </nav>
       </div>
     </header>
@@ -39,85 +39,92 @@
             NGO Registration
           </h2>
 
-          <!-- Updated form to connect with PHP -->
+          <!-- Form -->
           <form
             action="backend/ngo_register.php"
             method="POST"
             enctype="multipart/form-data"
+            id="ngo-register-form"
           >
             <!-- NGO Info -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label class="block font-semibold mb-2">NGO Name</label>
+                <label for="ngo_name" class="block font-semibold mb-2">NGO Name</label>
                 <input
                   type="text"
                   name="name"
+                  id="ngo_name"
                   class="w-full p-3 border rounded-lg"
                   required
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2">Email</label>
+                <label for="email" class="block font-semibold mb-2">Email</label>
                 <input
                   type="email"
                   name="email"
+                  id="email"
                   class="w-full p-3 border rounded-lg"
                   required
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2">Mobile Number</label>
+                <label for="mobile" class="block font-semibold mb-2">Mobile Number</label>
                 <input
                   type="tel"
                   name="mobile"
+                  id="mobile"
                   class="w-full p-3 border rounded-lg"
                   maxlength="10"
                   pattern="[0-9]{10}"
+                  placeholder="Enter 10 digit mobile number"
                   required
                 />
               </div>
-              <div class="mb-4">
-                <label
-                  for="password"
-                  class="block text-gray-700 text-sm font-bold mb-2"
-                  >Password</label
-                >
+              <div>
+                <label for="password" class="block font-semibold mb-2">Password</label>
                 <input
                   type="password"
                   id="password"
                   name="password"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-transparent"
-                  placeholder="Enter a strong password"
+                  class="w-full p-3 border rounded-lg"
+                  placeholder="Min 6 chars, 1 letter & 1 number"
                   required
                 />
               </div>
 
               <div>
-                <label class="block font-semibold mb-2"
-                  >Organization PAN Number</label
-                >
+                <label for="org_pan" class="block font-semibold mb-2">
+                  Organization PAN Number
+                </label>
                 <input
                   type="text"
                   name="org_pan"
+                  id="org_pan"
                   class="w-full p-3 border rounded-lg"
+                  placeholder="e.g., ABCDE1234F"
+                  maxlength="10"
+                  style="text-transform: uppercase;"
                   required
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2"
-                  >Registration Number</label
-                >
+                <label for="reg_number" class="block font-semibold mb-2">
+                  Registration Number
+                </label>
                 <input
                   type="text"
                   name="reg_number"
+                  id="reg_number"
                   class="w-full p-3 border rounded-lg"
                   required
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2">NGO Type</label>
+                <label for="ngo_type" class="block font-semibold mb-2">NGO Type</label>
                 <select
                   name="ngo_type"
+                  id="ngo_type"
                   class="w-full p-3 border rounded-lg"
                   required
                 >
@@ -128,54 +135,65 @@
                 </select>
               </div>
               <div>
-                <label class="block font-semibold mb-2"
-                  >State of Registration</label
-                >
+                <label for="state" class="block font-semibold mb-2">
+                  State of Registration
+                </label>
                 <input
                   type="text"
                   value="Gujarat"
                   name="state"
+                  id="state"
                   class="w-full p-3 border rounded-lg bg-gray-100"
                   readonly
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2"
-                  >District of Registration</label
-                >
+                <label for="district" class="block font-semibold mb-2">
+                  District of Registration
+                </label>
                 <input
                   type="text"
                   value="Surat"
                   name="district"
+                  id="district"
                   class="w-full p-3 border rounded-lg bg-gray-100"
                   readonly
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2">Darpan ID</label>
+                <label for="darpan_id" class="block font-semibold mb-2">Darpan ID</label>
                 <input
                   type="text"
                   name="darpan_id"
+                  id="darpan_id"
                   class="w-full p-3 border rounded-lg"
+                  placeholder="e.g., GJ20201234567"
+                  maxlength="13"
+                  style="text-transform: uppercase;"
                   required
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2">Owner PAN Number</label>
+                <label for="owner_pan" class="block font-semibold mb-2">Owner PAN Number</label>
                 <input
                   type="text"
                   name="owner_pan"
+                  id="owner_pan"
                   class="w-full p-3 border rounded-lg"
+                  placeholder="e.g., ABCDE1234F"
+                  maxlength="10"
+                  style="text-transform: uppercase;"
                   required
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2"
-                  >Owner Full Name (As per PAN)</label
-                >
+                <label for="owner_name" class="block font-semibold mb-2">
+                  Owner Full Name (As per PAN)
+                </label>
                 <input
                   type="text"
                   name="owner_name"
+                  id="owner_name"
                   class="w-full p-3 border rounded-lg"
                   required
                 />
@@ -184,40 +202,46 @@
 
             <!-- Certificates -->
             <div class="mt-6">
-              <label class="block font-semibold mb-2"
-                >Upload 12A or 80G Certificate</label
-              >
+              <label for="certificate" class="block font-semibold mb-2">
+                Upload 12A or 80G Certificate
+              </label>
               <input
                 type="file"
+                id="certificate"
                 name="certificate"
                 accept="image/*,application/pdf"
                 class="w-full p-3 border rounded-lg"
                 required
               />
-              <small class="text-gray-500"
-                >Upload any one (12A or 80G is mandatory)</small
-              >
+              <small class="text-gray-500">
+                Upload any one (12A or 80G is mandatory). Max size: 5MB
+              </small>
             </div>
 
             <!-- Bank Details -->
             <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label class="block font-semibold mb-2"
-                  >Bank Account Number</label
-                >
+                <label for="acc_no" class="block font-semibold mb-2">
+                  Bank Account Number
+                </label>
                 <input
                   type="text"
                   name="acc_no"
+                  id="acc_no"
                   class="w-full p-3 border rounded-lg"
                   required
                 />
               </div>
               <div>
-                <label class="block font-semibold mb-2">IFSC Code</label>
+                <label for="ifsc_code" class="block font-semibold mb-2">IFSC Code</label>
                 <input
                   type="text"
                   name="ifsc_code"
+                  id="ifsc_code"
                   class="w-full p-3 border rounded-lg"
+                  placeholder="e.g., HDFC0001234"
+                  maxlength="11"
+                  style="text-transform: uppercase;"
                   required
                 />
               </div>
@@ -249,6 +273,9 @@
     <footer class="bg-dark-color text-white py-6 text-center">
       <p>&copy; 2025 CharityBridge. All rights reserved.</p>
     </footer>
-    <script src="../js/ngo_script.js"></script>
+
+    <!-- JS Validation -->
+    <script src="../js/ngo_script.js">
+    </script>
   </body>
 </html>
