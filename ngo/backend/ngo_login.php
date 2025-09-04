@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['ngo_status'] = $ngo['status'];
 
             if ($ngo['status'] === "approved") {
-                header("Location: ../dashboard.php");
+                header("Location: ../pages/dashboard.php");
                 exit();
             } elseif ($ngo['status'] === "pending") {
                 header("Location: ../wait_for_approval.php");

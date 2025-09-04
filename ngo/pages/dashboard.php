@@ -3,7 +3,7 @@ session_start();
 
 // 🚨 Security: only logged-in NGOs can access
 if (!isset($_SESSION['ngo_id'])) {
-    header("Location: login.html");
+    header("Location: ../auth/login.html");
     exit();
 }
 
@@ -59,7 +59,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
   <title>NGO Dashboard - CharityBridge</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body class="bg-light-color text-text-dark">
 
@@ -75,7 +75,8 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
         <a href="requirements.php" class="text-primary-color hover:text-secondary-color px-3 py-2">Post Requirement</a>
         <a href="donations.php" class="text-primary-color hover:text-secondary-color px-3 py-2">Manage Donations</a>
         <a href="volunteers.php" class="text-primary-color hover:text-secondary-color px-3 py-2">Volunteers</a>
-        <a href="javascript:void(0);" id="logoutBtn" class="px-3 py-2">Logout </a>
+        <a href="manage_profile.html" class="text-primary-color hover:text-secondary-color px-3 py-2">Manage Profile</a>
+        <a href="../backend/logout.php" id="logoutBtn" class="px-3 py-2 text-red-500 font-semibold">Logout</a>
       </nav>
     </div>
   </div>
@@ -93,15 +94,29 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
         <h2 class="text-2xl font-bold mb-4 flex items-center text-primary-color">
           <i class="fas fa-bullhorn mr-3 text-accent-color"></i> Current Needs
         </h2>
-        <ul class="space-y-3">
+        <ul class="space-y-3" id="requirements-list">
           <?php if ($requirements->num_rows > 0): ?>
-            <?php while($row = $requirements->fetch_assoc()): ?>
-              <li class="flex items-center">
-                <i class="fas fa-check mr-3 text-secondary-color"></i> <?= htmlspecialchars($row['title']) ?> - <?= htmlspecialchars($row['description']) ?>
+            <?php
+            $requirements_data = [];
+            while($row = $requirements->fetch_assoc()) {
+                $requirements_data[] = $row;
+            }
+            // Reset pointer to use it again if needed, though not necessary here
+            // $requirements->data_seek(0); 
+            foreach($requirements_data as $row):
+            ?>
+              <li class="flex justify-between items-start" id="requirement-<?= $row['id'] ?>">
+                <div>
+                  <i class="fas fa-check mr-3 text-secondary-color"></i>
+                  <span><?= htmlspecialchars($row['title']) ?> - <?= htmlspecialchars($row['description']) ?></span>
+                </div>
+                <button onclick="deleteRequirement(<?= $row['id'] ?>)" class="text-red-500 hover:text-red-700 font-semibold ml-4">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
               </li>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
           <?php else: ?>
-            <li>No requirements posted yet.</li>
+            <li id="no-requirements-message">No requirements posted yet.</li>
           <?php endif; ?>
         </ul>
         <a href="requirements.php" class="mt-4 inline-block btn btn-primary">Post a New Requirement</a>
@@ -161,19 +176,58 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
   </div>
 </footer>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const logoutBtn = document.getElementById("logoutBtn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", function(event) {
-      event.preventDefault();
-      if (confirm("Are you sure you want to logout?")) {
-        window.location.href = "../ngo/backend/logout.php";
+      if (!confirm("Are you sure you want to logout?")) {
+        event.preventDefault();
       }
     });
   }
 });
+
+async function deleteRequirement(id) {
+  if (!confirm("Are you sure you want to delete this requirement?")) {
+    return;
+  }
+
+  try {
+    const response = await fetch('../backend/delete_requirement.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id: id })
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      if (result.success) {
+        const requirementElement = document.getElementById('requirement-' + id);
+        if (requirementElement) {
+          requirementElement.remove();
+        }
+
+        const requirementsList = document.getElementById('requirements-list');
+        if (requirementsList.children.length === 0) {
+           const noReqMessage = document.createElement('li');
+           noReqMessage.id = 'no-requirements-message';
+           noReqMessage.textContent = 'No requirements posted yet.';
+           requirementsList.appendChild(noReqMessage);
+        }
+      } else {
+        alert('Error: ' + (result.error || 'Could not delete the requirement.'));
+      }
+    } else {
+      alert('An error occurred while trying to delete the requirement.');
+    }
+  } catch (error) {
+    console.error('Deletion error:', error);
+    alert('A network error occurred. Please try again.');
+  }
+}
 </script>
 </body>
 </html>

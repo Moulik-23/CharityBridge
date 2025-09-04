@@ -30,32 +30,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ifsc_code  = $_POST['ifsc_code'];
 
     // File upload (certificate)
-    if (isset($_FILES['certificate']) && $_FILES['certificate']['error'] == 0) {
-        $certificate = file_get_contents($_FILES['certificate']['tmp_name']);
-    } else {
+    if (!isset($_FILES['certificate']) || $_FILES['certificate']['error'] != 0) {
         die("⚠️ Certificate upload failed. Please try again.");
     }
 
-    // Prepare statement with correct order
+    // Prepare statement without certificate first
     $sql = "INSERT INTO ngos 
-        (name, email, phone, password, org_pan, reg_number, ngo_type, state, district, darpan_id, owner_pan, owner_name, certificate, acc_no, ifsc_code, status) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')";
+        (name, email, phone, password, org_pan, reg_number, ngo_type, state, district, darpan_id, owner_pan, owner_name, acc_no, ifsc_code, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')";
     
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         die("❌ SQL Error: " . $conn->error);
     }
 
-    // Correct order in bind_param
-    $stmt->bind_param("sssssssssssssss",
+    // Bind parameters without certificate
+    $stmt->bind_param("ssssssssssssss",
         $name, $email, $phone, $password, $org_pan, $reg_number, $ngo_type, $state, $district,
-        $darpan_id, $owner_pan, $owner_name, $certificate, $acc_no, $ifsc_code
+        $darpan_id, $owner_pan, $owner_name, $acc_no, $ifsc_code
     );
 
     if ($stmt->execute()) {
-        // Redirect to waiting page
-        header("Location: wait_for_approval.php");
-        exit();
+        $ngo_id = $stmt->insert_id;
+
+        // Handle file upload
+        $target_dir = "../certificates/";
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0755, true);
+        }
+        
+        $file_extension = pathinfo($_FILES['certificate']['name'], PATHINFO_EXTENSION);
+        $new_filename = $ngo_id . '.' . $file_extension;
+        $target_file = $target_dir . $new_filename;
+
+        if (move_uploaded_file($_FILES['certificate']['tmp_name'], $target_file)) {
+            // Update the certificate path in the database
+            $update_sql = "UPDATE ngos SET certificate = ? WHERE id = ?";
+            $update_stmt = $conn->prepare($update_sql);
+            if (!$update_stmt) {
+                die("❌ SQL Error: " . $conn->error);
+            }
+            $update_stmt->bind_param("si", $new_filename, $ngo_id);
+            
+            if ($update_stmt->execute()) {
+                // Redirect to waiting page
+                header("Location: wait_for_approval.php");
+                exit();
+            } else {
+                echo "❌ Error updating certificate path: " . $update_stmt->error;
+            }
+            $update_stmt->close();
+        } else {
+            // Optional: Delete the inserted NGO record if file upload fails
+            $delete_sql = "DELETE FROM ngos WHERE id = ?";
+            $delete_stmt = $conn->prepare($delete_sql);
+            $delete_stmt->bind_param("i", $ngo_id);
+            $delete_stmt->execute();
+            $delete_stmt->close();
+            
+            echo "❌ Error uploading certificate. Registration cancelled.";
+        }
     } else {
         echo "❌ Error: " . $stmt->error;
     }

@@ -3,7 +3,7 @@ session_start();
 
 // 🚨 Redirect to login if NGO is not logged in
 if (!isset($_SESSION['ngo_id'])) {
-    header("Location: login.php");
+    header("Location: ../auth/login.html");
     exit();
 }
 
@@ -56,7 +56,7 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manage Donations - CharityBridge</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body class="bg-light-color text-text-dark">
 
@@ -69,7 +69,8 @@ $conn->close();
       <a href="requirements.php" class="px-3 py-2">Post Requirement</a>
       <a href="donations.php" class="px-3 py-2 font-bold text-secondary-color">Manage Donations</a>
       <a href="volunteers.php" class="px-3 py-2">Volunteers</a>
-      <a href="../logout.php" class="px-3 py-2">Logout</a>
+      <a href="manage_profile.html" class="px-3 py-2">Manage Profile</a>
+      <a href="../backend/logout.php" class="px-3 py-2">Logout</a>
     </nav>
   </div>
 </header>

@@ -21,8 +21,6 @@
           <nav class="hidden md:flex">
             <a href="/charitybridge/admin/dashboard.php" class="text-gray-800 hover:text-blue-500 px-3 py-2">Dashboard</a>
             <a href="approvals.php" class="text-gray-800 hover:text-blue-500 px-3 py-2">Approvals</a>
-            <a href="fraud.html" class="text-gray-800 hover:text-blue-500 px-3 py-2">Fraud Management</a>
-            <a href="content.html" class="text-gray-800 hover:text-blue-500 px-3 py-2">Content</a>
             <a href="../index.html" class="text-gray-800 hover:text-blue-500 px-3 py-2">Logout</a>
           </nav>
         </div>
@@ -59,7 +57,7 @@
                   die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT id, name, email, darpan_id, created_at FROM ngos WHERE status='pending'";
+                $sql = "SELECT id, name, email, darpan_id, created_at, certificate FROM ngos WHERE status='pending'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -69,7 +67,18 @@
                     echo "<td class='py-3 px-4'>{$row['email']}</td>";
                     echo "<td class='py-3 px-4'>{$row['darpan_id']}</td>";
                     echo "<td class='py-3 px-4'>{$row['created_at']}</td>";
-                    echo "<td class='py-3 px-4'><a href='../ngo/certificates/{$row['id']}.pdf' target='_blank' class='text-blue-600 hover:underline'><i class='fas fa-file-alt mr-2'></i>View</a></td>";
+                    $certificate = $row['certificate'];
+                    // Check if the certificate is a filename (printable string with an extension)
+                    if ($certificate && ctype_print($certificate) && strpos($certificate, '.') !== false) {
+                        // New file-based certificate: provide a download link
+                        echo "<td class='py-3 px-4'><a href='../ngo/certificates/{$certificate}' download class='text-blue-600 hover:underline'><i class='fas fa-download mr-2'></i>Download</a></td>";
+                    } elseif ($certificate) {
+                        // Old BLOB-based certificate: provide a download link to the script
+                        echo "<td class='py-3 px-4'><a href='../ngo/view_certificate.php?id={$row['id']}' class='text-blue-600 hover:underline'><i class='fas fa-download mr-2'></i>Download</a></td>";
+                    } else {
+                        // No certificate data
+                        echo "<td class='py-3 px-4 text-gray-500'>No Certificate</td>";
+                    }
                     echo "<td class='py-3 px-4 text-center'>
                             <button onclick=\"approveNgo({$row['id']}, document.getElementById('ngo-row-{$row['id']}'))\" class='bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600'>
                               <i class='fas fa-check mr-2'></i>Approve
