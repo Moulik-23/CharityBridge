@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" >
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header>
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+        <nav class="hidden md:flex">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../../login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Login Form -->
+    <section class="py-16">
+      <div class="container">
+        <div class="max-w-md mx-auto">
+          <h2 class="text-center mb-12">Admin Login</h2>
+
+          <!-- Form connected to backend (now handled inline by PHP in login.php) -->
+          <form action="login.php" method="POST">
+            <!-- Role -->
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select id="role" name="role" required>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"  
+                name="email"
+                placeholder="admin@example.com"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+
+            <!-- Remember Me -->
+            <div class="form-group">
+              <label class="inline-flex items-center">
+                <input type="checkbox" id="remember_me" name="remember_me" class="mr-2" />
+                <span>Remember me</span>
+              </label>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary w-full">
+                Login
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+      </div>
+    </footer>
+    <!-- <script src="../js/admin.js"></script> -->
+    <script>
+      // Remember me functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const emailInput = document.getElementById('email');
+        const rememberMeCheckbox = document.getElementById('remember_me');
+        const loginForm = document.querySelector('form');
+
+        // Load saved email if remember me was checked
+        const savedEmail = localStorage.getItem('admin_email');
+        if (savedEmail) {
+          emailInput.value = savedEmail;
+          rememberMeCheckbox.checked = true;
+        }
+
+        // Save email on form submit if remember me is checked
+        loginForm.addEventListener('submit', function() {
+          if (rememberMeCheckbox.checked) {
+            localStorage.setItem('admin_email', emailInput.value.trim());
+          } else {
+            localStorage.removeItem('admin_email');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

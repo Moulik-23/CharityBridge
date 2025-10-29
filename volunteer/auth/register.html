@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Registration - CharityBridge</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="bg-light-color text-text-dark">
+
+    <!-- Header -->
+    <header>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../../index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+            <nav class="hidden md:flex">
+                <ul>
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="volunteer_login.html">Login</a></li>
+                    <li><a href="register.html" class="btn btn-primary">Register</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-2 px-4" id="mobile-menu">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="volunteer_login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Volunteer Registration Form -->
+    <section class="py-20">
+        <div class="container">
+            <div class="max-w-lg mx-auto">
+                <h2 class="text-center mb-8">Volunteer Registration</h2>
+
+                <form action="volunteer_register.php" method="POST" id="volunteerRegistrationForm" autocomplete="off">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" id="name" autocomplete="off" required>
+                        <span class="error-message message error" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" autocomplete="off" required>
+                        <span class="error-message message error" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" autocomplete="new-password" required>
+                        <span class="error-message message error" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" id="phone" autocomplete="off" required>
+                        <span class="error-message message error" id="phoneError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="aadhaar">Aadhaar</label>
+                        <input type="text" name="aadhaar" id="aadhaar" maxlength="12" autocomplete="off" required>
+                        <span class="error-message message error" id="aadhaarError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" name="address" id="address" autocomplete="off" required>
+                        <span class="error-message message error" id="addressError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" name="city" id="city" autocomplete="off" required>
+                        <span class="error-message message error" id="cityError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills">Skills (Optional)</label>
+                        <input type="text" name="skills" id="skills" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="availability">Availability (Optional)</label>
+                        <select name="availability" id="availability">
+                            <option value="">-- Select --</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Occasional">Occasional</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-full" id="registerButton">Register</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('volunteerRegistrationForm');
+            const registerButton = document.getElementById('registerButton');
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const phoneInput = document.getElementById('phone');
+            const aadhaarInput = document.getElementById('aadhaar');
+            const addressInput = document.getElementById('address');
+            const cityInput = document.getElementById('city');
+
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const phoneError = document.getElementById('phoneError');
+            const aadhaarError = document.getElementById('aadhaarError');
+            const addressError = document.getElementById('addressError');
+            const cityError = document.getElementById('cityError');
+
+            function showError(element, message) {
+                element.textContent = message;
+                element.style.display = 'block';
+            }
+
+            function hideError(element) {
+                element.textContent = '';
+                element.style.display = 'none';
+            }
+
+            function validateField(inputElement, errorElement, validationFn) {
+                const value = inputElement.value.trim();
+                const errorMessage = validationFn(value);
+                if (errorMessage) {
+                    showError(errorElement, errorMessage);
+                    return false;
+                } else {
+                    hideError(errorElement);
+                    return true;
+                }
+            }
+
+            // Validation functions
+            const validateName = (name) => {
+                if (!name) return 'Full Name is required.';
+                if (name.length < 3) return 'Full Name must be at least 3 characters long.';
+                return '';
+            };
+
+            const validateEmail = (email) => {
+                if (!email) return 'Email is required.';
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) return 'Please enter a valid email address.';
+                return '';
+            };
+
+            const validatePassword = (password) => {
+                if (!password) return 'Password is required.';
+                if (password.length < 8) return 'Password must be at least 8 characters long.';
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+                if (!passwordRegex.test(password)) return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                return '';
+            };
+
+            const validatePhone = (phone) => {
+                if (!phone) return 'Phone number is required.';
+                const phoneRegex = /^\d{10}$/;
+                if (!phoneRegex.test(phone)) return 'Phone number must be 10 digits.';
+                return '';
+            };
+
+            const validateAadhaar = (aadhaar) => {
+                if (!aadhaar) return 'Aadhaar number is required.';
+                const aadhaarRegex = /^\d{12}$/;
+                if (!aadhaarRegex.test(aadhaar)) return 'Aadhaar number must be exactly 12 digits.';
+                return '';
+            };
+
+            const validateAddress = (address) => {
+                if (!address) return 'Address is required.';
+                if (address.length < 5) return 'Address must be at least 5 characters long.';
+                return '';
+            };
+
+            const validateCity = (city) => {
+                if (!city) return 'City is required.';
+                if (city.length < 2) return 'City must be at least 2 characters long.';
+                return '';
+            };
+
+            // Add event listeners for real-time validation (optional, but good UX)
+            nameInput.addEventListener('input', () => validateField(nameInput, nameError, validateName));
+            emailInput.addEventListener('input', () => validateField(emailInput, emailError, validateEmail));
+            passwordInput.addEventListener('input', () => validateField(passwordInput, passwordError, validatePassword));
+            phoneInput.addEventListener('input', () => validateField(phoneInput, phoneError, validatePhone));
+            aadhaarInput.addEventListener('input', () => validateField(aadhaarInput, aadhaarError, validateAadhaar));
+            addressInput.addEventListener('input', () => validateField(addressInput, addressError, validateAddress));
+            cityInput.addEventListener('input', () => validateField(cityInput, cityError, validateCity));
+
+
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+
+                isValid = validateField(nameInput, nameError, validateName) && isValid;
+                isValid = validateField(emailInput, emailError, validateEmail) && isValid;
+                isValid = validateField(passwordInput, passwordError, validatePassword) && isValid;
+                isValid = validateField(phoneInput, phoneError, validatePhone) && isValid;
+                isValid = validateField(aadhaarInput, aadhaarError, validateAadhaar) && isValid;
+                isValid = validateField(addressInput, addressError, validateAddress) && isValid;
+                isValid = validateField(cityInput, cityError, validateCity) && isValid;
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission if validation fails
+                }
+            });
+        });
+    </script>

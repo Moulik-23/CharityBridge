@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Registration - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="../../index.html" class="text-3xl font-bold text-primary-color">
+          CharityBridge
+        </a>
+        <nav class="space-x-6">
+          <a href="../../index.html" class="text-gray-600 hover:text-primary-color">
+            Home
+          </a>
+          <a href="restaurant_login.html" class="text-gray-600 hover:text-primary-color">
+            Login
+          </a>
+          <a href="restaurant_register.html" class="btn btn-primary">Register</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section - Minimal -->
+    <section class="bg-primary-color text-white py-6">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="text-2xl font-bold mb-2">Join as a Restaurant Partner</h1>
+                <p class="text-sm opacity-90">Help reduce food waste and support your community</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Registration Form -->
+    <section class="py-8 bg-light-color">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-6">
+            <h2 class="text-xl font-bold text-primary-color mb-2">Restaurant Registration</h2>
+            <p class="text-sm text-gray-600">Complete the form below to start donating surplus food</p>
+          </div>
+
+          <!-- Display server-side error message -->
+          <?php if (isset($_GET['error'])): ?>
+            <p class="text-red-500 text-center mb-4"><?= htmlspecialchars($_GET['error']) ?></p>
+          <?php endif; ?>
+
+          <!-- Form -->
+          <form
+            action="../backend/restaurant_register.php"
+            method="POST"
+            enctype="multipart/form-data"
+            id="restaurantRegistrationForm"
+            class="compact-form"
+            autocomplete="off"
+          >
+            <!-- Basic Information Section -->
+            <div class="form-section">
+              <h3>Restaurant Information</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="restaurant_name">Restaurant Name</label>
+                  <input
+                    type="text"
+                    name="restaurant_name"
+                    id="restaurant_name"
+                    placeholder="Enter restaurant name"
+                    autocomplete="off"
+                    required
+                  />
+                  <span class="error-message" id="restaurantNameError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="owner_name">Owner/Manager Name</label>
+                  <input
+                    type="text"
+                    name="owner_name"
+                    id="owner_name"
+                    placeholder="Enter owner/manager name"
+                    autocomplete="off"
+                    required
+                  />
+                  <span class="error-message" id="ownerNameError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="restaurant@example.com"
+                    autocomplete="off"
+                    required
+                  />
+                  <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    placeholder="Enter phone number"
+                    autocomplete="off"
+                    required
+                  />
+                  <span class="error-message" id="phoneError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a strong password"
+                    autocomplete="new-password"
+                    required
+                  />
+                  <span class="error-message" id="passwordError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="confirm_password">Confirm Password</label>
+                  <input
+                    type="password"
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                    required
+                  />
+                  <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Location Section -->
+            <div class="form-section">
+              <h3>Location Details</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="address">Full Address</label>
+                  <textarea
+                    name="address"
+                    id="address"
+                    rows="3"
+                    placeholder="Street, Area, City (Surat only)"
+                    required
+                  ></textarea>
+                  <span class="error-message" id="addressError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="pincode">Pincode</label>
+                  <input
+                    type="text"
+                    name="pincode"
+                    id="pincode"
+                    maxlength="6"
+                    pattern="[0-9]{6}"
+                    placeholder="Enter 6-digit pincode"
+                    required
+                  />
+                  <span class="error-message" id="pincodeError"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- License Section -->
+            <div class="form-section">
+              <h3>License Information</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="fssai_license">FSSAI License Number</label>
+                  <input
+                    type="text"
+                    name="fssai_license"
+                    id="fssai_license"
+                    placeholder="(E.g., 12345678901234)" 
+                    maxlength="14"
+                    required
+                  />
+                  <span class="error-message" id="fssaiLicenseError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="restaurant_type">Restaurant Type</label>
+                  <select
+                    name="restaurant_type"
+                    id="restaurant_type"
+                    required
+                  >
+                    <option value="">Select Type</option>
+                    <option value="Veg">Veg</option>
+                    <option value="Non-Veg">Non-Veg</option>
+                    <option value="Both">Both</option>
+                  </select>
+                  <span class="error-message" id="restaurantTypeError"></span>
+                </div>
+                <div class="form-group">
+                  <label for="license_document">Upload License Document</label>
+                  <input
+                    type="file"
+                    name="license_document"
+                    id="license_document"
+                    accept="image/*,application/pdf"
+                    required
+                  />
+                  <small class="text-gray-500 mt-2 block">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    Upload FSSAI license document. Max size: 5MB
+                  </small>
+                  <span class="error-message" id="licenseDocumentError"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="form-group">
+              <label class="flex items-start">
+                <input type="checkbox" class="mr-3 mt-1" required>
+                <span class="text-sm text-gray-600">
+                  I agree to the <a href="#" class="text-primary-color hover:underline">Terms of Service</a> and <a href="#" class="text-primary-color hover:underline">Privacy Policy</a>. I confirm that all information provided is accurate and I am authorized to register this restaurant.
+                </span>
+              </label>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="btn btn-primary w-full text-lg py-4 mt-8"
+              id="registerRestaurantButton"
+            >
+              <i class="fas fa-utensils mr-2"></i>
+              Register Restaurant
+            </button>
+          </form>
+
+          <!-- Already have an account -->
+          <p class="text-center text-gray-600 text-sm mt-6">
+            Already have an account?
+            <a
+              href="restaurant_login.html"
+              class="text-primary-color hover:underline font-semibold"
+            >
+              Login here
+            </a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-color text-white py-6 text-center">
+      <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+    </footer>
+
+    <script src="../../js/restaurant.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('restaurantRegistrationForm');
+            const registerButton = document.getElementById('registerRestaurantButton');
+
+            const restaurantNameInput = document.getElementById('restaurant_name');
+            const ownerNameInput = document.getElementById('owner_name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm_password');
+            const addressInput = document.getElementById('address');
+            const pincodeInput = document.getElementById('pincode');
+            const fssaiLicenseInput = document.getElementById('fssai_license');
+            const licenseDocumentInput = document.getElementById('license_document');
+            const restaurantTypeSelect = document.getElementById('restaurant_type');
+
+            const restaurantNameError = document.getElementById('restaurantNameError');
+            const ownerNameError = document.getElementById('ownerNameError');
+            const emailError = document.getElementById('emailError');
+            const phoneError = document.getElementById('phoneError');
+            const passwordError = document.getElementById('passwordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const addressError = document.getElementById('addressError');
+            const pincodeError = document.getElementById('pincodeError');
+            const fssaiLicenseError = document.getElementById('fssaiLicenseError');
+            const licenseDocumentError = document.getElementById('licenseDocumentError');
+            const restaurantTypeError = document.getElementById('restaurantTypeError');
+
+            function showError(element, message) {
+                element.textContent = message;
+                element.style.display = 'block';
+            }
+
+            function hideError(element) {
+                element.textContent = '';
+                element.style.display = 'none';
+            }
+
+            function validateField(inputElement, errorElement, validationFn) {
+                const value = inputElement.value.trim();
+                const errorMessage = validationFn(value);
+                if (errorMessage) {
+                    showError(errorElement, errorMessage);
+                    return false;
+                } else {
+                    hideError(errorElement);
+                    return true;
+                }
+            }
+
+            // Validation functions
+            const validateRestaurantName = (name) => {
+                if (!name) return 'Restaurant Name is required.';
+                if (name.length < 3) return 'Restaurant Name must be at least 3 characters long.';
+                return '';
+            };
+
+            const validateOwnerName = (name) => {
+                if (!name) return 'Owner/Manager Name is required.';
+                if (name.length < 3) return 'Owner/Manager Name must be at least 3 characters long.';
+                return '';
+            };
+
+            const validateEmail = (email) => {
+                if (!email) return 'Email is required.';
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) return 'Please enter a valid email address.';
+                return '';
+            };
+
+            const validatePhone = (phone) => {
+                if (!phone) return 'Phone number is required.';
+                // Removed specific 10-digit validation for more flexibility
+                return '';
+            };
+
+            const validatePassword = (password) => {
+                if (!password) return 'Password is required.';
+                if (password.length < 8) return 'Password must be at least 8 characters long.';
+                const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+                if (!passwordRegex.test(password)) return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+                return '';
+            };
+
+            const validateConfirmPassword = (confirmPassword) => {
+                if (!confirmPassword) return 'Confirm Password is required.';
+                if (confirmPassword !== passwordInput.value) return 'Passwords do not match.';
+                return '';
+            };
+
+            const validateAddress = (address) => {
+                if (!address) return 'Address is required.';
+                if (address.length < 5) return 'Address must be at least 5 characters long.';
+                return '';
+            };
+
+            const validatePincode = (pincode) => {
+                if (!pincode) return 'Pincode is required.';
+                const pincodeRegex = /^\d{6}$/;
+                if (!pincodeRegex.test(pincode)) return 'Pincode must be 6 digits.';
+                return '';
+            };
+
+            const validateFssaiLicense = (fssaiLicense) => {
+                if (!fssaiLicense) return 'FSSAI License Number is required.';
+                const fssaiRegex = /^\d{14}$/;
+                if (!fssaiRegex.test(fssaiLicense)) return 'FSSAI License Number must be exactly 14 digits.';
+                return '';
+            };
+
+            const validateLicenseDocument = (fileInput) => {
+                if (fileInput.files.length === 0) return 'License Document is required.';
+                return '';
+            };
+
+            const validateRestaurantType = (type) => {
+                if (!type) return 'Restaurant Type is required.';
+                return '';
+            };
+
+
+            // Add event listeners for real-time validation
+            restaurantNameInput.addEventListener('input', () => validateField(restaurantNameInput, restaurantNameError, validateRestaurantName));
+            ownerNameInput.addEventListener('input', () => validateField(ownerNameInput, ownerNameError, validateOwnerName));
+            emailInput.addEventListener('input', () => validateField(emailInput, emailError, validateEmail));
+            phoneInput.addEventListener('input', () => validateField(phoneInput, phoneError, validatePhone));
+            passwordInput.addEventListener('input', () => validateField(passwordInput, passwordError, validatePassword));
+            confirmPasswordInput.addEventListener('input', () => validateField(confirmPasswordInput, confirmPasswordError, validateConfirmPassword));
+            addressInput.addEventListener('input', () => validateField(addressInput, addressError, validateAddress));
+            pincodeInput.addEventListener('input', () => validateField(pincodeInput, pincodeError, validatePincode));
+            fssaiLicenseInput.addEventListener('input', () => validateField(fssaiLicenseInput, fssaiLicenseError, validateFssaiLicense));
+            licenseDocumentInput.addEventListener('change', () => validateField(licenseDocumentInput, licenseDocumentError, validateLicenseDocument));
+            restaurantTypeSelect.addEventListener('change', () => validateField(restaurantTypeSelect, restaurantTypeError, validateRestaurantType));
+
+
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+
+                isValid = validateField(restaurantNameInput, restaurantNameError, validateRestaurantName) && isValid;
+                isValid = validateField(ownerNameInput, ownerNameError, validateOwnerName) && isValid;
+                isValid = validateField(emailInput, emailError, validateEmail) && isValid;
+                isValid = validateField(phoneInput, phoneError, validatePhone) && isValid;
+                isValid = validateField(passwordInput, passwordError, validatePassword) && isValid;
+                isValid = validateField(confirmPasswordInput, confirmPasswordError, validateConfirmPassword) && isValid;
+                isValid = validateField(addressInput, addressError, validateAddress) && isValid;
+                isValid = validateField(pincodeInput, pincodeError, validatePincode) && isValid;
+                isValid = validateField(fssaiLicenseInput, fssaiLicenseError, validateFssaiLicense) && isValid;
+                isValid = validateField(licenseDocumentInput, licenseDocumentError, validateLicenseDocument) && isValid;
+                isValid = validateField(restaurantTypeSelect, restaurantTypeError, validateRestaurantType) && isValid;
+
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission if validation fails
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Profile - CharityBridge</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="bg-light-color text-text-dark">
+
+<!-- Header -->
+<header>
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="dashboard.php" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+    <nav class="hidden md:flex">
+      <ul>
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li><a href="requirements.php">Post Requirement</a></li>
+        <li><a href="donations.php">Manage Donations</a></li>
+        <li><a href="volunteers.php">Volunteers</a></li>
+        <li><a href="manage_profile.html">Manage Profile</a></li>
+        <li><a href="../backend/logout.php" id="logoutBtn">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="py-16">
+  <div class="container">
+    <h1>Manage Your Profile</h1>
+
+    <div class="max-w-2xl mx-auto">
+      <form action="../backend/update_profile.php" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">NGO Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" name="phone" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" rows="4" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="qr_code">Upload New QR Code (Optional)</label>
+          <input type="file" id="qr_code" name="qr_code" accept="image/*">
+          <p class="text-sm text-gray-500 mt-2">Current QR Code: <span id="current-qr-code">None</span></p>
+        </div>
+        <button type="submit" class="btn btn-primary w-full">Update Profile</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function(event) {
+      if (!confirm("Are you sure you want to logout?")) {
+        event.preventDefault();
+      }
+    });
+  }
+
+  // Fetch NGO profile data and populate the form
+  fetch('../backend/get_profile.php')
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('name').value = data.ngo.name;
+        document.getElementById('email').value = data.ngo.email;
+        document.getElementById('phone').value = data.ngo.phone;
+        
+        document.getElementById('address').value = data.ngo.address;
+        
+        if (data.ngo.qr_code_image) {
+          document.getElementById('current-qr-code').textContent = data.ngo.qr_code_image;
+        }
+      } else {
+        console.error('Error fetching profile:', data.error);
+      }
+    })
+    .catch(error => console.error('Network error:', error));
+});
+</script>
+</body>
+</html>

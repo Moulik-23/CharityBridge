@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NGO Registration - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header>
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../../index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+        <nav class="hidden md:flex">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="../../register.html" class="btn btn-primary">Register</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section - Minimal -->
+    <section class="bg-primary-color text-white py-6">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="text-2xl font-bold mb-2">Register Your NGO Organization</h1>
+                <p class="text-sm opacity-90">Join our platform and connect with donors, volunteers, and resources</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NGO Registration Form -->
+    <section class="py-8 bg-light-color">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-6">
+            <h2 class="text-xl font-bold text-primary-color mb-2">Organization Registration</h2>
+            <p class="text-sm text-gray-600">Complete the form below to register your NGO</p>
+          </div>
+
+          <!-- Form -->
+          <form
+            action="../backend/ngo_register.php"
+            method="POST"
+            enctype="multipart/form-data"
+            id="ngo-register-form"
+            class="compact-form"
+            autocomplete="off"
+          >
+            <!-- Basic Information Section -->
+            <div class="form-section">
+              <h3>Basic Information</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="ngo_name">NGO Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="ngo_name"
+                    placeholder="Enter your organization name"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="organization@example.org"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="mobile">Mobile Number</label>
+                  <input
+                    type="tel"
+                    name="mobile"
+                    id="mobile"
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    placeholder="Enter 10 digit mobile number"
+                    autocomplete="off"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Min 6 chars, 1 letter & 1 number"
+                    autocomplete="new-password"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Organization Details Section -->
+            <div class="form-section">
+              <h3>Organization Details</h3>
+              <div class="form-grid-2">
+
+                <div class="form-group">
+                  <label for="org_pan">Organization PAN Number</label>
+                  <input
+                    type="text"
+                    name="org_pan"
+                    id="org_pan"
+                    placeholder="e.g., ABCDE1234F"
+                    maxlength="10"
+                    style="text-transform: uppercase;"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="reg_number">Registration Number</label>
+                  <input
+                    type="text"
+                    name="reg_number"
+                    id="reg_number"
+                    placeholder="Enter registration number"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="ngo_type">NGO Type</label>
+                  <select
+                    name="ngo_type"
+                    id="ngo_type"
+                    required
+                  >
+                    <option value="">Select Type</option>
+                    <option value="">Select Type</option>
+                    <option value="Trust">Trust</option>
+                    <option value="Society">Society</option>
+                    <option value="Section 8 Company">Section 8 Company</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="state">State of Registration</label>
+                  <input
+                    type="text"
+                    value="Gujarat"
+                    name="state"
+                    id="state"
+                    class="bg-gray-100"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="district">District of Registration</label>
+                  <input
+                    type="text"
+                    value="Surat"
+                    name="district"
+                    id="district"
+                    class="bg-gray-100"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="darpan_id">Darpan ID</label>
+                  <input
+                    type="text"
+                    name="darpan_id"
+                    id="darpan_id"
+                    placeholder="e.g., GJ20201234567"
+                    maxlength="13"
+                    style="text-transform: uppercase;"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="owner_pan">Owner PAN Number</label>
+                  <input
+                    type="text"
+                    name="owner_pan"
+                    id="owner_pan"
+                    placeholder="e.g., ABCDE1234F"
+                    maxlength="10"
+                    style="text-transform: uppercase;"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="owner_name">Owner Full Name (As per PAN)</label>
+                  <input
+                    type="text"
+                    name="owner_name"
+                    id="owner_name"
+                    placeholder="Enter full name as per PAN"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Documents Section -->
+            <div class="form-section">
+              <h3>Required Documents</h3>
+
+              <div class="form-group">
+                <label for="certificate">Upload 12A or 80G Certificate</label>
+                <input
+                  type="file"
+                  id="certificate"
+                  name="certificate"
+                  accept="image/*,application/pdf"
+                  required
+                />
+                <small class="text-gray-500 mt-2 block">
+                  <i class="fas fa-info-circle mr-1"></i>
+                  Upload any one (12A or 80G is mandatory). Max size: 5MB
+                </small>
+              </div>
+            </div>
+
+            <!-- Bank Details Section -->
+            <div class="form-section">
+              <h3>Banking Information</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="acc_no">Bank Account Number</label>
+                  <input
+                    type="text"
+                    name="acc_no"
+                    id="acc_no"
+                    placeholder="Enter bank account number"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="ifsc_code">IFSC Code</label>
+                  <input
+                    type="text"
+                    name="ifsc_code"
+                    id="ifsc_code"
+                    placeholder="e.g., HDFC0001234"
+                    maxlength="11"
+                    style="text-transform: uppercase;"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="form-group">
+              <label class="flex items-start">
+                <input type="checkbox" id="terms_checkbox" class="mr-3 mt-1" required>
+                <span class="text-sm text-gray-600">
+                  I agree to the <a href="#" class="text-primary-color hover:underline">Terms of Service</a> and <a href="#" class="text-primary-color hover:underline">Privacy Policy</a>. I confirm that all information provided is accurate and I am authorized to register this organization.
+                </span>
+              </label>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="button"
+              id="ngo-register-button"
+              class="btn btn-primary w-full text-lg py-4 mt-8"
+            >
+              <i class="fas fa-building mr-2"></i>
+              Register Organization
+            </button>
+          </form>
+
+          <!-- Already have an account -->
+          <p class="text-center text-gray-600 text-sm mt-6">
+            Already have an account?
+            <a
+              href="login.html"
+              class="text-primary-color hover:underline font-semibold"
+              >Login here</a
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- JS Validation -->
+    <script src="../../js/ngo_script.js"></script>
+  </body>
+</html>

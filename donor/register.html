@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Registration - CharityBridge</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light-color text-text-dark">
+
+    <!-- Header -->
+    <header>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+            <nav class="hidden md:flex">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../login.html">Login</a></li>
+                    <li><a href="../register.html" class="btn btn-primary">Register</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-2 px-4" id="mobile-menu">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../login.html">Login</a></li>
+                <li><a href="../register.html">Register</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary-color via-secondary-color to-accent-color text-white py-16">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Join as a<br>
+                    <span class="text-yellow-300">Generous Donor</span>
+                </h1>
+                <p class="text-lg md:text-xl opacity-95">
+                    Start your journey of making a meaningful impact in your community
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donor Registration Form -->
+    <section class="py-20 bg-light-color">
+        <div class="container">
+            <div class="max-w-lg mx-auto">
+                <div class="form-container">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-gradient-to-br from-primary-color to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-heart text-white text-3xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-primary-color">Create Donor Account</h2>
+                        <p class="text-gray-600 mt-2">Join our community of changemakers</p>
+                    </div>
+                    
+                    <form action="backend/donor_register.php" method="POST" autocomplete="off">
+                        <div class="form-group">
+                            <label for="name">
+                                <i class="fas fa-user mr-2 text-primary-color"></i>
+                                Full Name
+                            </label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope mr-2 text-primary-color"></i>
+                                Email Address
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">
+                                <i class="fas fa-lock mr-2 text-primary-color"></i>
+                                Password
+                            </label>
+                            <input type="password" id="password" name="password" placeholder="Create a strong password" autocomplete="new-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">
+                                <i class="fas fa-lock mr-2 text-primary-color"></i>
+                                Confirm Password
+                            </label>
+                            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" autocomplete="new-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">
+                                <i class="fas fa-phone mr-2 text-primary-color"></i>
+                                Phone Number
+                            </label>
+                            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">
+                                <i class="fas fa-map-marker-alt mr-2 text-primary-color"></i>
+                                Address
+                            </label>
+                            <input type="text" id="address" name="address" placeholder="Enter your address" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">
+                                <i class="fas fa-city mr-2 text-primary-color"></i>
+                                City
+                            </label>
+                            <input type="text" id="city" name="city" placeholder="Enter your city" autocomplete="off">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="mr-3" required>
+                                <span class="text-sm text-gray-600">
+                                    I agree to the <a href="#" class="text-primary-color hover:underline">Terms of Service</a> and <a href="#" class="text-primary-color hover:underline">Privacy Policy</a>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-full text-lg py-4">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Create Donor Account
+                        </button>
+                    </form>
+                    
+                    <div class="text-center mt-8 pt-6 border-t border-gray-200">
+                        <p class="text-gray-600 mb-4">Already have an account?</p>
+                        <a href="login.html" class="btn bg-gray-100 text-gray-700 hover:bg-gray-200 w-full">
+                            <i class="fas fa-sign-in-alt mr-2"></i>
+                            Sign In Instead
+                        </a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- <script src="../js/script.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="theme-color" content="#1e3a5f">
+    <title>Register - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/animations.js" defer></script>
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header>
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+        <nav class="hidden md:flex">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html" class="btn btn-primary">Register</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="auth-hero relative overflow-hidden" style="min-height: 50vh; background: linear-gradient(135deg, #1e3a5f 0%, #2a3142 100%);">
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 70% 50%, rgba(45, 95, 77, 0.15), transparent 50%);"></div>
+        <div class="container relative z-10" style="padding-top: 5rem; padding-bottom: 5rem;">
+            <div class="text-center max-w-4xl mx-auto fade-in">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #a68958, #8b6f47); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 10px 30px rgba(166, 137, 88, 0.3);">
+                    <i class="fas fa-user-plus" style="color: white; font-size: 2rem;"></i>
+                </div>
+                <h1 class="font-extrabold mb-6" style="font-size: clamp(2.5rem, 5vw, 3.5rem); color: white; letter-spacing: -0.03em;">
+                    Join Our Mission
+                </h1>
+                <p class="text-xl leading-relaxed" style="color: rgba(255,255,255,0.85); line-height: 1.8;">
+                    Become part of a community that's creating real change. Choose how you'd like to contribute.
+                </p>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0" style="height: 80px; background: linear-gradient(to top, #f5f7fa, transparent);"></div>
+    </section>
+
+    <!-- Registration Role Selector -->
+    <section class="py-24" style="background: #f5f7fa;">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="mb-6" style="font-size: 2.5rem; color: #2c3e50; font-weight: 700;">Choose Your Role in Our Community</h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: #5a6c7d; line-height: 1.8;">
+                    Every role is essential to our mission. Select how you'd like to contribute to creating positive change.
+                </p>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <button onclick="redirectTo('donor')" class="scale-in register-card" data-color="#a84848" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; cursor: pointer;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #a84848, #c85a5a); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-heart" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">Become a Donor</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Support causes with financial or goods donations.</p>
+                    </button>
+                    <button onclick="redirectTo('ngo')" class="scale-in register-card" data-color="#2d5f4d" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; cursor: pointer;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #2d5f4d, #3d7a62); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-hands-helping" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">Register as NGO</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Amplify your mission with access to resources.</p>
+                    </button>
+                    <button onclick="redirectTo('volunteer')" class="scale-in register-card" data-color="#8b6f47" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; cursor: pointer;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #8b6f47, #a68958); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-user-friends" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">Join as Volunteer</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Find meaningful opportunities to serve.</p>
+                    </button>
+                    <button onclick="redirectTo('restaurant')" class="scale-in register-card" data-color="#9b7d4a" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; cursor: pointer;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #9b7d4a, #b89560); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="fas fa-utensils" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">Restaurant Partner</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Donate surplus food to fight hunger.</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Section -->
+    <section class="py-16 bg-white">
+        <div class="container">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-2xl font-bold mb-6 text-primary-color">Why Join CharityBridge?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary-color rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-white text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Trusted & Secure</h4>
+                        <p class="text-gray-600">Verified organizations and transparent processes ensure your contributions make real impact.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Track Your Impact</h4>
+                        <p class="text-gray-600">See exactly how your contributions are making a difference with detailed impact reports.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-accent-color rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Community Driven</h4>
+                        <p class="text-gray-600">Join thousands of like-minded individuals working together to create positive change.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="login.html" class="btn bg-gray-100 text-gray-700 hover:bg-gray-200 text-lg px-8 py-4">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        Already Have an Account?
+                    </a>
+                    <a href="index.html" class="btn bg-gray-100 text-gray-700 hover:bg-gray-200 text-lg px-8 py-4">
+                        <i class="fas fa-home mr-2"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <style>
+      /* Better hover effect for register cards */
+      .register-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.15) !important;
+        border-color: rgba(0,0,0,0.12) !important;
+      }
+      
+      /* Keep text readable on hover - no color change */
+      .register-card:hover h4,
+      .register-card:hover p {
+        color: inherit !important;
+      }
+      
+      /* Subtle background tint on hover */
+      .register-card:hover {
+        background: linear-gradient(145deg, #ffffff, #f8f9fa) !important;
+      }
+      
+      /* Disable hover on touch devices */
+      @media (hover: none) {
+        .register-card:hover {
+          transform: none !important;
+        }
+      }
+    </style>
+    
+    <script>
+      function redirectTo(role) {
+        if (role === "ngo") {
+          window.location.href = "ngo/auth/ngo_register.html";
+        } else if (role === "volunteer") {
+          window.location.href = "volunteer/auth/register.html"; 
+        } else if(role == "donor"){
+          window.location.href = "donor/register.html";
+        }
+        else if(role === "restaurant"){
+          window.location.href="restaurant/auth/restaurant_register.html"
+        }
+        else {
+          window.location.href="dummy.html"
+        }
+      }
+    </script>
+  </body>
+</html>

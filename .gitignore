@@ -1,0 +1,205 @@
+# CharityBridge .gitignore
+# Prevents unnecessary files from being committed to version control
+
+# ============================================
+# Uploaded Files (User-generated content)
+# ============================================
+/ngo/certificates/*.png
+/ngo/certificates/*.jpg
+/ngo/certificates/*.jpeg
+/ngo/certificates/*.pdf
+!/ngo/certificates/.gitkeep
+
+/restaurant/backend/licenses/*.png
+/restaurant/backend/licenses/*.jpg
+/restaurant/backend/licenses/*.jpeg
+/restaurant/backend/licenses/*.pdf
+!/restaurant/backend/licenses/.gitkeep
+
+/restaurant/pge/uploads/*.png
+/restaurant/pge/uploads/*.jpg
+/restaurant/pge/uploads/*.jpeg
+!/restaurant/pge/uploads/.gitkeep
+
+# ============================================
+# Development & Debug Files
+# ============================================
+*.log
+*.log.*
+debug_*.log
+error.log
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Old/backup files
+*_old.*
+*_backup.*
+*.backup
+
+# Test files
+test_*.php
+test_*.html
+test_*.js
+*_test.*
+
+# ============================================
+# IDE & Editor Files
+# ============================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PHPStorm / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# NetBeans
+nbproject/
+
+# Eclipse
+.project
+.buildpath
+.settings/
+
+# Atom
+.atom/
+
+# ============================================
+# Operating System Files
+# ============================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# ============================================
+# PHP Specific
+# ============================================
+# Composer
+/vendor/
+composer.lock
+
+# Cache
+/cache/
+/tmp/
+*.cache
+
+# ============================================
+# Database
+# ============================================
+# Database backups (keep schema in version control)
+*.sql.gz
+*.sql.zip
+*_backup.sql
+dump.sql
+
+# SQLite databases (if used)
+*.sqlite
+*.sqlite3
+*.db
+
+# ============================================
+# Configuration Files with Secrets
+# ============================================
+# Environment files (if you switch to .env approach)
+.env
+.env.local
+.env.*.local
+
+# Config files with sensitive data (if separated)
+config.local.php
+config.production.php
+secrets.php
+
+# ============================================
+# Node Modules (if using frontend build tools)
+# ============================================
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# ============================================
+# Build & Distribution
+# ============================================
+/dist/
+/build/
+*.min.js
+*.min.css
+
+# ============================================
+# Documentation Drafts
+# ============================================
+# Keep essential docs, ignore drafts
+DRAFT_*.md
+TODO_*.md
+NOTES.md
+scratch.md
+
+# ============================================
+# Logs & Reports
+# ============================================
+*.log
+logs/
+*.report
+
+# ============================================
+# Security & Keys
+# ============================================
+*.pem
+*.key
+*.crt
+*.p12
+id_rsa
+id_rsa.pub
+
+# ============================================
+# Temporary PHP Files
+# ============================================
+*.php~
+.phpunit.result.cache
+
+# ============================================
+# Session Files
+# ============================================
+/sessions/
+*.sess
+
+# ============================================
+# XAMPP Specific (Optional)
+# ============================================
+# If tracking XAMPP config, ignore these
+php_error.log
+mysql_error.log
+
+# ============================================
+# Keep These Files (Exceptions)
+# ============================================
+# Ensure these are tracked even if in ignored directories
+!.gitkeep
+!README.md
+!.htaccess
+!index.php
+!*.example.php

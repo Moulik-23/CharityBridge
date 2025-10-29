@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management - CharityBridge</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header>
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-3xl font-bold text-primary-color">CharityBridge - Admin</a>
+            <nav class="hidden md:flex">
+                <ul>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="approvals.php">Approvals</a></li>
+                    <li><a href="fraud.html">Fraud Management</a></li>
+                    <li><a href="content.html">Content</a></li>
+                    <li><a href="#" onclick="confirmLogout(event)">Logout</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white py-2 px-4" id="mobile-menu">
+            <ul>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="approvals.php">Approvals</a></li>
+                <li><a href="fraud.html">Fraud Management</a></li>
+                <li><a href="content.html">Content</a></li>
+                <li><a href="#" onclick="confirmLogout(event)">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-16">
+        <div class="container">
+            <h1>Content Management</h1>
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-light">
+                <h2 class="mb-6">Edit Homepage Content</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="hero-title">Hero Title</label>
+                        <input type="text" id="hero-title" name="hero-title" value="Connecting Hearts, Changing Lives">
+                    </div>
+                    <div class="form-group">
+                        <label for="hero-subtitle">Hero Subtitle</label>
+                        <textarea id="hero-subtitle" name="hero-subtitle" rows="3">Join our community to make a difference. We bridge the gap between those who want to help and those who need it.</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

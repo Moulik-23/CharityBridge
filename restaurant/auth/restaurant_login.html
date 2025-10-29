@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Login - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="../../index.html" class="text-3xl font-bold text-primary-color">
+          CharityBridge
+        </a>
+        <nav class="space-x-6">
+          <a href="../../index.html" class="text-gray-600 hover:text-primary-color">
+            Home
+          </a>
+          <a href="restaurant_login.html" class="btn btn-primary">Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Login Form -->
+    <section class="py-16">
+      <div class="container mx-auto px-6">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-10">
+          <h2 class="text-4xl font-bold text-center mb-12 text-primary-color">
+            Restaurant Login
+          </h2>
+
+          <!-- Display server-side error message -->
+          <?php if (isset($_GET['error'])): ?>
+            <div class="message error mb-4">
+              <?= htmlspecialchars($_GET['error']) ?>
+            </div>
+          <?php endif; ?>
+
+          <form id="restaurantLoginForm" action="../backend/restaurant_login.php" method="POST">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+              <span class="error-message message error" id="emailError"></span>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+              />
+              <span class="error-message message error" id="passwordError"></span>
+            </div>
+            <div class="flex items-center mt-4">
+              <input
+                type="checkbox"
+                name="remember_me"
+                id="remember_me"
+                class="w-4 h-4 text-primary-color border-gray-300 rounded focus:ring-primary-color"
+              />
+              <label for="remember_me" class="ml-2 text-sm text-gray-600">
+                Remember me
+              </label>
+            </div>
+            <button
+              type="submit"
+              class="w-full mt-8 btn btn-primary"
+              id="loginButton"
+            >
+              Login
+            </button>
+          </form>
+           <p class="text-center text-gray-600 text-sm mt-6">
+            Don't have an account?
+            <a
+              href="restaurant_register.html"
+              class="text-primary-color hover:underline font-semibold"
+            >
+              Create An Account
+            </a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-color text-white py-6 text-center">
+      <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('restaurantLoginForm');
+            const loginButton = document.getElementById('loginButton');
+
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const rememberMeCheckbox = document.getElementById('remember_me');
+
+            // Load saved email if remember me was checked
+            const savedEmail = localStorage.getItem('restaurant_email');
+            if (savedEmail) {
+                emailInput.value = savedEmail;
+                rememberMeCheckbox.checked = true;
+            }
+
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+
+            function showError(element, message) {
+                element.textContent = message;
+                element.style.display = 'block';
+            }
+
+            function hideError(element) {
+                element.textContent = '';
+                element.style.display = 'none';
+            }
+
+            function validateField(inputElement, errorElement, validationFn) {
+                const value = inputElement.value.trim();
+                const errorMessage = validationFn(value);
+                if (errorMessage) {
+                    showError(errorElement, errorMessage);
+                    return false;
+                } else {
+                    hideError(errorElement);
+                    return true;
+                }
+            }
+
+            // Validation functions
+            const validateEmail = (email) => {
+                if (!email) return 'Email is required.';
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) return 'Please enter a valid email address.';
+                return '';
+            };
+
+            const validatePassword = (password) => {
+                if (!password) return 'Password is required.';
+                return '';
+            };
+
+            // Add event listeners for real-time validation
+            emailInput.addEventListener('input', () => validateField(emailInput, emailError, validateEmail));
+            passwordInput.addEventListener('input', () => validateField(passwordInput, passwordError, validatePassword));
+
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+
+                isValid = validateField(emailInput, emailError, validateEmail) && isValid;
+                isValid = validateField(passwordInput, passwordError, validatePassword) && isValid;
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission if validation fails
+                } else {
+                    // Save or remove email based on remember me checkbox
+                    if (rememberMeCheckbox.checked) {
+                        localStorage.setItem('restaurant_email', emailInput.value.trim());
+                    } else {
+                        localStorage.removeItem('restaurant_email');
+                    }
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1e3a5f">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>CharityBridge - Connecting Hearts, Changing Lives</title>
+    <meta name="description" content="CharityBridge connects donors, NGOs, restaurants, and volunteers to create meaningful impact in communities. Join our mission to make a difference.">
+    <meta name="keywords" content="charity, NGO, donations, volunteering, community service, social impact">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/animations.js" defer></script>
+</head>
+<body class="bg-light-color text-text-dark">
+    <header>
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+            <nav>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html" class="btn btn-primary">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section - Professional & Modern -->
+        <section class="hero-section relative overflow-hidden" style="min-height: 90vh; background: linear-gradient(135deg, #1e3a5f 0%, #2a3142 50%, #2d5f4d 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 50%, rgba(45, 95, 77, 0.15), transparent 50%), radial-gradient(circle at 70% 50%, rgba(30, 58, 95, 0.15), transparent 50%);"></div>
+            <div class="container relative z-10" style="padding-top: 8rem; padding-bottom: 8rem;">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left: Content -->
+                    <div class="text-white fade-in" style="max-width: 600px;">
+                        <h1 class="font-extrabold mb-6 leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem); color: white; letter-spacing: -0.03em;">
+                            Building Bridges.<br>
+                            <span style="color: #a68958; font-weight: 900;">Creating Impact.</span>
+                        </h1>
+                        <p class="text-xl mb-8 leading-relaxed" style="color: rgba(255,255,255,0.85); line-height: 1.8;">
+                            A unified platform connecting NGOs, donors, volunteers, and restaurants to maximize social impact and community transformation.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="register.html" class="btn text-lg px-8 py-4" style="background: linear-gradient(135deg, #a68958 0%, #8b6f47 100%); color: white; box-shadow: 0 10px 30px rgba(166, 137, 88, 0.3);">
+                                <i class="fas fa-hand-holding-heart mr-2"></i>
+                                Get Started
+                            </a>
+                            <a href="#ecosystem" class="btn bg-white bg-opacity-10 text-white hover:bg-opacity-20 text-lg px-8 py-4" style="border: 2px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px);">
+                                <i class="fas fa-arrow-down mr-2"></i>
+                                Explore Platform
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Right: 3D Visual Placeholder -->
+                    <div class="relative" style="height: 500px;">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="relative" style="width: 100%; height: 100%; perspective: 1000px;">
+                                <!-- Professional placeholder for 3D diagram -->
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background: rgba(255,255,255,0.05); border-radius: 20px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; animation: float 6s ease-in-out infinite;">
+                                    <div style="text-align: center; color: white;">
+                                        <i class="fas fa-network-wired" style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.6;"></i>
+                                        <p style="font-size: 1.2rem; font-weight: 600; opacity: 0.8;">Ecosystem Visualization</p>
+                                        <p style="font-size: 0.9rem; opacity: 0.5; margin-top: 0.5rem;">Connecting all stakeholders</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Subtle geometric patterns -->
+            <div class="absolute bottom-0 left-0 right-0" style="height: 100px; background: linear-gradient(to top, rgba(245, 247, 250, 1), transparent);"></div>
+        </section>
+        <!-- 3D Ecosystem Diagram Section -->
+        <section id="ecosystem" class="py-32 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20 fade-in">
+                    <h2 class="text-5xl font-bold mb-6" style="color: #2c3e50;">How Our Ecosystem Works</h2>
+                    <p class="text-xl max-w-3xl mx-auto" style="color: #5a6c7d; line-height: 1.8;">
+                        CharityBridge creates a unified network where every stakeholder plays a crucial role in driving social impact.
+                    </p>
+                </div>
+                
+                <!-- 3D Diagram Container -->
+                <div class="relative ecosystem-container" style="height: 600px; margin-bottom: 4rem;">
+                    <div class="absolute inset-0 flex items-center justify-center" style="perspective: 1200px;">
+                        
+                        <!-- Mobile: Show simplified linear layout -->
+                        <div class="md:hidden" style="width: 100%; display: flex; flex-direction: column; gap: 1rem; padding: 1rem;">
+                            <!-- Mobile Center Hub -->
+                            <div style="width: 100%; background: linear-gradient(135deg, #1e3a5f, #2d5f4d); border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 2rem; box-shadow: 0 8px 24px rgba(30, 58, 95, 0.3);">
+                                <div style="text-align: center; color: white;">
+                                    <i class="fas fa-network-wired" style="font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                                    <p style="font-weight: 700; font-size: 1.1rem;">CharityBridge</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Mobile Nodes -->
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; width: 100%;">
+                                <div style="background: linear-gradient(135deg, #2d5f4d, #3d7a62); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(45, 95, 77, 0.3);">
+                                    <i class="fas fa-hands-helping" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                                    <p style="font-weight: 600; font-size: 0.85rem;">NGOs</p>
+                                </div>
+                                <div style="background: linear-gradient(135deg, #a84848, #c85a5a); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(168, 72, 72, 0.3);">
+                                    <i class="fas fa-heart" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                                    <p style="font-weight: 600; font-size: 0.85rem;">Donors</p>
+                                </div>
+                                <div style="background: linear-gradient(135deg, #8b6f47, #a68958); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(139, 111, 71, 0.3);">
+                                    <i class="fas fa-user-friends" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                                    <p style="font-weight: 600; font-size: 0.85rem;">Volunteers</p>
+                                </div>
+                                <div style="background: linear-gradient(135deg, #9b7d4a, #b89560); border-radius: 12px; padding: 1.5rem; text-align: center; color: white; box-shadow: 0 4px 12px rgba(155, 125, 74, 0.3);">
+                                    <i class="fas fa-utensils" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                                    <p style="font-weight: 600; font-size: 0.85rem;">Restaurants</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Desktop: Show 3D layout -->
+                        <div class="hidden md:block" style="width: 100%; height: 100%; position: relative;">
+                        
+                        <!-- Center Hub -->
+                        <div class="ecosystem-hub" style="position: absolute; width: 200px; height: 200px; background: linear-gradient(135deg, #1e3a5f, #2d5f4d); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(30, 58, 95, 0.3); animation: pulse-hub 3s ease-in-out infinite; z-index: 10;">
+                            <div style="text-align: center; color: white;">
+                                <i class="fas fa-network-wired" style="font-size: 3rem; margin-bottom: 0.5rem;"></i>
+                                <p style="font-weight: 700; font-size: 1.1rem;">CharityBridge</p>
+                            </div>
+                        </div>
+                        
+                        <!-- NGO Node -->
+                        <div class="ecosystem-node" style="position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 150px; height: 150px; background: linear-gradient(135deg, #2d5f4d, #3d7a62); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(45, 95, 77, 0.3); animation: float-node 4s ease-in-out infinite;">
+                            <div style="text-align: center; color: white;">
+                                <i class="fas fa-hands-helping" style="font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                                <p style="font-weight: 600; font-size: 0.95rem;">NGOs</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Donor Node -->
+                        <div class="ecosystem-node" style="position: absolute; right: 80px; top: 50%; transform: translateY(-50%); width: 150px; height: 150px; background: linear-gradient(135deg, #a84848, #c85a5a); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(168, 72, 72, 0.3); animation: float-node 4s ease-in-out infinite 1s;">
+                            <div style="text-align: center; color: white;">
+                                <i class="fas fa-heart" style="font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                                <p style="font-weight: 600; font-size: 0.95rem;">Donors</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Volunteer Node -->
+                        <div class="ecosystem-node" style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 150px; height: 150px; background: linear-gradient(135deg, #8b6f47, #a68958); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(139, 111, 71, 0.3); animation: float-node 4s ease-in-out infinite 2s;">
+                            <div style="text-align: center; color: white;">
+                                <i class="fas fa-user-friends" style="font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                                <p style="font-weight: 600; font-size: 0.95rem;">Volunteers</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Restaurant Node -->
+                        <div class="ecosystem-node" style="position: absolute; left: 80px; top: 50%; transform: translateY(-50%); width: 150px; height: 150px; background: linear-gradient(135deg, #9b7d4a, #b89560); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 40px rgba(155, 125, 74, 0.3); animation: float-node 4s ease-in-out infinite 3s;">
+                            <div style="text-align: center; color: white;">
+                                <i class="fas fa-utensils" style="font-size: 2.5rem; margin-bottom: 0.5rem;"></i>
+                                <p style="font-weight: 600; font-size: 0.95rem;">Restaurants</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Connection Lines -->
+                        <svg style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; opacity: 0.2;" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="50%" y1="50%" x2="50%" y2="15%" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="5,5"/>
+                            <line x1="50%" y1="50%" x2="85%" y2="50%" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="5,5"/>
+                            <line x1="50%" y1="50%" x2="50%" y2="85%" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="5,5"/>
+                            <line x1="50%" y1="50%" x2="15%" y2="50%" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="5,5"/>
+                        </svg>
+                        
+                        </div>
+                        <!-- End Desktop Layout -->
+                        
+                    </div>
+                </div>
+                
+                <!-- Value Proposition Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                    <div class="text-center fade-in" style="padding: 2rem;">
+                        <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #2d5f4d, #3d7a62); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-link" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Unified Platform</h3>
+                        <p style="color: #5a6c7d; line-height: 1.7;">Single ecosystem connecting all stakeholders, eliminating fragmentation and maximizing efficiency.</p>
+                    </div>
+                    <div class="text-center fade-in" style="padding: 2rem; animation-delay: 0.2s;">
+                        <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #1e3a5f, #2d5a8f); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shield-alt" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Verified & Secure</h3>
+                        <p style="color: #5a6c7d; line-height: 1.7;">Admin-verified organizations ensure trust and transparency in every transaction and interaction.</p>
+                    </div>
+                    <div class="text-center fade-in" style="padding: 2rem; animation-delay: 0.4s;">
+                        <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #8b6f47, #a68958); border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-chart-line" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.5rem;">Measurable Impact</h3>
+                        <p style="color: #5a6c7d; line-height: 1.7;">Real-time tracking and comprehensive reporting demonstrate tangible social impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stakeholder Pathways Section -->
+        <section class="py-24 bg-light-color">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="mb-4" style="font-size: 2.5rem; color: #2c3e50;">Choose Your Path to Impact</h2>
+                    <p class="text-xl max-w-3xl mx-auto" style="color: #5a6c7d; line-height: 1.8;">
+                        Every stakeholder plays a vital role in creating positive change. Select your path to begin making a difference.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Donor Card -->
+                    <a href="login.html?role=donor" class="scale-in" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; position: relative; overflow: hidden;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #a84848, #c85a5a); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-heart" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">Donors</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Support verified causes with monetary or goods donations. Track your impact in real-time.</p>
+                        <div style="margin-top: 1.5rem; color: #a84848; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center;">
+                            <span>Get Started</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 0.5rem; font-size: 0.8rem; transition: transform 0.3s;"></i>
+                        </div>
+                    </a>
+                    
+                    <!-- NGO Card -->
+                    <a href="login.html?role=ngo" class="scale-in" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; position: relative; overflow: hidden;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #2d5f4d, #3d7a62); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-hands-helping" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">NGOs</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Access donors, volunteers, and resources. Amplify your mission and serve communities better.</p>
+                        <div style="margin-top: 1.5rem; color: #2d5f4d; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center;">
+                            <span>Join Network</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 0.5rem; font-size: 0.8rem; transition: transform 0.3s;"></i>
+                        </div>
+                    </a>
+                    
+                    <!-- Volunteer Card -->
+                    <a href="login.html?role=volunteer" class="scale-in" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; position: relative; overflow: hidden;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #8b6f47, #a68958); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-user-friends" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">Volunteers</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Contribute your time and skills. Find opportunities that match your passions and availability.</p>
+                        <div style="margin-top: 1.5rem; color: #8b6f47; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center;">
+                            <span>Find Opportunities</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 0.5rem; font-size: 0.8rem; transition: transform 0.3s;"></i>
+                        </div>
+                    </a>
+                    
+                    <!-- Restaurant Card -->
+                    <a href="login.html?role=restaurant" class="scale-in" style="display: block; background: white; border-radius: 16px; padding: 2.5rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; position: relative; overflow: hidden;">
+                        <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #9b7d4a, #b89560); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-utensils" style="color: white; font-size: 2rem;"></i>
+                        </div>
+                        <h4 style="color: #2c3e50; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">Restaurants</h4>
+                        <p style="color: #5a6c7d; font-size: 0.95rem; line-height: 1.6; margin: 0;">Reduce food waste. Donate surplus meals to those in need while supporting sustainability.</p>
+                        <div style="margin-top: 1.5rem; color: #9b7d4a; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center;">
+                            <span>Start Donating</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 0.5rem; font-size: 0.8rem; transition: transform 0.3s;"></i>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Admin Access -->
+                <div class="text-center mt-12 fade-in">
+                    <a href="login.html?role=admin" style="display: inline-block; color: #5a6c7d; font-size: 0.95rem; text-decoration: none; padding: 0.75rem 1.5rem; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; transition: all 0.3s;">
+                        <i class="fas fa-user-shield" style="margin-right: 0.5rem;"></i>
+                        Admin Portal Access
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-28 bg-white relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20 fade-in">
+                    <h2 class="text-4xl font-bold mb-6" style="color: #2c3e50;">How CharityBridge Creates Impact</h2>
+                    <p class="text-xl max-w-3xl mx-auto" style="color: #5a6c7d; line-height: 1.8;">
+                        Our streamlined platform makes it simple to connect resources with needs, creating measurable social change.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div class="text-center fade-in slide-in-left" style="padding: 3rem 2rem; background: linear-gradient(145deg, #f5f7fa, #ffffff); border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); position: relative;">
+                        <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #1e3a5f, #2d5a8f); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 10px 30px rgba(30, 58, 95, 0.25);">
+                            <span style="font-size: 2.5rem; font-weight: 900; color: white;">1</span>
+                        </div>
+                        <h4 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: #1e3a5f;">Register & Verify</h4>
+                        <p style="color: #5a6c7d; line-height: 1.7; font-size: 1rem;">Create your account and complete our secure verification process. We ensure every organization and participant meets our trust standards.</p>
+                    </div>
+                    <div class="text-center fade-in" style="padding: 3rem 2rem; background: linear-gradient(145deg, #f5f7fa, #ffffff); border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); position: relative;">
+                        <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #2d5f4d, #3d7a62); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 10px 30px rgba(45, 95, 77, 0.25);">
+                            <span style="font-size: 2.5rem; font-weight: 900; color: white;">2</span>
+                        </div>
+                        <h4 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: #2d5f4d;">Connect & Match</h4>
+                        <p style="color: #5a6c7d; line-height: 1.7; font-size: 1rem;">Our intelligent matching system connects donors with causes, volunteers with opportunities, and resources with needs in real-time.</p>
+                    </div>
+                    <div class="text-center fade-in slide-in-right" style="padding: 3rem 2rem; background: linear-gradient(145deg, #f5f7fa, #ffffff); border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); position: relative;">
+                        <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #8b6f47, #a68958); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 10px 30px rgba(139, 111, 71, 0.25);">
+                            <span style="font-size: 2.5rem; font-weight: 900; color: white;">3</span>
+                        </div>
+                        <h4 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: #8b6f47;">Track & Measure</h4>
+                        <p style="color: #5a6c7d; line-height: 1.7; font-size: 1rem;">Monitor your contributions with detailed analytics and reports. See the tangible difference you're making in communities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Impact Stats Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="mb-4">Our Impact in Numbers</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Together, we're creating measurable change in communities across the region.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="stats-card scale-in">
+                        <div class="stats-number" id="beneficiaries-count">0</div>
+                        <div class="stats-label">Beneficiaries Reached</div>
+                    </div>
+                    <div class="stats-card scale-in">
+                        <div class="stats-number" id="ngos-count">0</div>
+                        <div class="stats-label">Active NGOs</div>
+                    </div>
+                    <div class="stats-card scale-in">
+                        <div class="stats-number" id="meals-count">0</div>
+                        <div class="stats-label">Meals Donated</div>
+                    </div>
+                    <div class="stats-card scale-in">
+                        <div class="stats-number" id="volunteer-hours-count">0</div>
+                        <div class="stats-label">Community Hours</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Statement Section -->
+        <section class="py-32 relative overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f 0%, #2a3142 100%);">
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(45, 95, 77, 0.2), transparent 70%);"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center" style="max-width: 900px; margin: 0 auto;">
+                    <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #a68958, #8b6f47); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 2.5rem; box-shadow: 0 15px 40px rgba(166, 137, 88, 0.3); transform: rotate(5deg);">
+                        <i class="fas fa-heart" style="color: white; font-size: 3rem; transform: rotate(-5deg);"></i>
+                    </div>
+                    <h2 class="text-5xl font-bold mb-6 fade-in" style="color: white;">Our Mission</h2>
+                    <p class="text-xl leading-relaxed mb-10 fade-in" style="color: rgba(255,255,255,0.9); line-height: 2; font-size: 1.3rem;">
+                        To bridge the gap between those who want to help and those who need help, creating a more connected and compassionate world through technology, transparency, and sustainable community action.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+                        <a href="register.html" class="btn text-lg px-10 py-4" style="background: linear-gradient(135deg, #a68958, #8b6f47); color: white; box-shadow: 0 10px 30px rgba(166, 137, 88, 0.4); border: none;">
+                            <i class="fas fa-hand-holding-heart mr-2"></i>
+                            Start Making Impact
+                        </a>
+                        <a href="#how-it-works" class="btn bg-white text-lg px-10 py-4" style="color: #1e3a5f; border: 2px solid white;">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Decorative elements -->
+            <div class="absolute bottom-0 left-0 right-0" style="height: 150px; background: linear-gradient(to top, #f5f7fa, transparent);"></div>
+        </section>
+    </main>
+    <footer class="bg-dark-color text-white py-16">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="footer-brand">
+                    <h4 class="text-2xl font-bold mb-5 text-primary-color">CharityBridge ❤️</h4>
+                    <p class="text-gray-300 mb-4">Connecting hearts, changing lives. Join our mission to create a more compassionate world through technology and community.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary-color rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary-color rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary-color rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary-color rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 class="text-xl font-bold mb-5 text-primary-color">Get Involved</h4>
+                    <ul class="space-y-3">
+                        <li><a href="register.html" class="text-gray-300 hover:text-white transition-colors">Join Our Community</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Volunteer Opportunities</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Partner With Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Impact Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="text-xl font-bold mb-5 text-primary-color">Support</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Report Issue</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 class="text-xl font-bold mb-5 text-primary-color">Legal & Trust</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Code of Conduct</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Transparency Report</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-gray-400 mt-12 border-t border-gray-700 pt-8">
+                <p>&copy; 2025 CharityBridge. All rights reserved. | Making the world a better place, one connection at a time.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

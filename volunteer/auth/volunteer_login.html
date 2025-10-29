@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteer Login - CharityBridge</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body class="bg-light-color text-text-dark">
+    <!-- Header -->
+    <header>
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../../index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+        <nav class="hidden md:flex">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="volunteer_login.html">Login</a></li>
+            <li><a href="register.html" class="btn btn-primary">Register</a></li>
+          </ul>
+        </nav>
+        <button class="md:hidden" id="mobile-menu-button">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-white py-2 px-4" id="mobile-menu">
+        <ul>
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="volunteer_login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Login Form -->
+    <section class="py-16">
+      <div class="container">
+        <div class="max-w-md mx-auto login-form-container">
+          <h2 class="text-center mb-12">Volunteer Login</h2>
+
+          <!-- ✅ Connects to backend -->
+          <form action="../auth/volunteer_login.php" method="POST">
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="volunteer@example.com"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+
+            <!-- Remember Me -->
+            <div class="form-group flex items-center">
+              <input type="checkbox" id="remember_me" name="remember_me" class="mr-2" />
+              <label for="remember_me" class="mb-0">Remember me</label>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary w-full">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      document.getElementById('mobile-menu-button')?.addEventListener('click', function(){
+        document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      });
+
+      // Remember me functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const emailInput = document.getElementById('email');
+        const rememberMeCheckbox = document.getElementById('remember_me');
+        const loginForm = document.querySelector('form');
+
+        // Load saved email if remember me was checked
+        const savedEmail = localStorage.getItem('volunteer_email');
+        if (savedEmail) {
+          emailInput.value = savedEmail;
+          rememberMeCheckbox.checked = true;
+        }
+
+        // Save email on form submit if remember me is checked
+        loginForm.addEventListener('submit', function() {
+          if (rememberMeCheckbox.checked) {
+            localStorage.setItem('volunteer_email', emailInput.value.trim());
+          } else {
+            localStorage.removeItem('volunteer_email');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
