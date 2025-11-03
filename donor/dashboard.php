@@ -175,7 +175,7 @@ $conn->close();
                                     <td><?php echo htmlspecialchars($ngo['ngo_type']); ?></td>
                                     <td><?php echo htmlspecialchars($ngo['state'] . ', ' . $ngo['district']); ?></td>
                                     <td>
-                                        <a href="donate.php?ngo_id=<?php echo htmlspecialchars($ngo['id']); ?>" class="action-btn primary" style="padding: 6px 16px; font-size: 0.85em;">Donate</a>
+                                        <a href="donate_form.php?ngo_id=<?php echo htmlspecialchars($ngo['id']); ?>" class="action-btn primary" style="padding: 6px 16px; font-size: 0.85em;">Donate</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

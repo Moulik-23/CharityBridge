@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['map
     $map_id = intval($_POST['map_id']);
 
     if (in_array($action, ['approved', 'rejected', 'removed'])) {
+        // For 'removed' action, we don't delete - just mark as removed
         $stmt = $conn->prepare("UPDATE volunteer_ngo_map SET status=? WHERE id=?");
         $stmt->bind_param("si", $action, $map_id);
         $stmt->execute();
@@ -44,12 +45,12 @@ $res_pending = $stmt->get_result();
 $pending = $res_pending->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
 
-// Fetch APPROVED volunteers
+// Fetch APPROVED volunteers (including withdrawn)
 $sql_approved = "SELECT vnm.id, v.name, v.email, v.phone, v.city, vr.title AS requirement_title, vnm.status
         FROM volunteer_ngo_map vnm
         JOIN volunteers v ON vnm.volunteer_id = v.volunteer_id
         JOIN volunteer_requirements vr ON vnm.req_id = vr.req_id
-        WHERE vr.ngo_id = ? AND vnm.status = 'approved'
+        WHERE vr.ngo_id = ? AND vnm.status IN ('approved', 'withdrawn')
         ORDER BY vnm.created_at DESC";
 
 $stmt = $conn->prepare($sql_approved);
@@ -185,31 +186,47 @@ $conn->close();
               <th class="py-3 px-4 border-b-2 border-gray-200">Phone</th>
               <th class="py-3 px-4 border-b-2 border-gray-200">City</th>
               <th class="py-3 px-4 border-b-2 border-gray-200">Requirement</th>
+              <th class="py-3 px-4 border-b-2 border-gray-200">Status</th>
               <th class="py-3 px-4 text-center border-b-2 border-gray-200">Actions</th>
             </tr>
           </thead>
           <tbody>
             <?php if (count($approved) > 0): ?>
               <?php foreach ($approved as $a): ?>
-                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                <tr class="border-b border-gray-100 hover:bg-gray-50 <?= $a['status'] === 'withdrawn' ? 'bg-gray-100' : '' ?>">
                   <td class="py-2 px-4"><?= htmlspecialchars($a['name']) ?></td>
                   <td class="py-2 px-4"><?= htmlspecialchars($a['email']) ?></td>
                   <td class="py-2 px-4"><?= htmlspecialchars($a['phone']) ?></td>
                   <td class="py-2 px-4"><?= htmlspecialchars($a['city']) ?></td>
                   <td class="py-2 px-4"><?= htmlspecialchars($a['requirement_title']) ?></td>
+                  <td class="py-2 px-4">
+                    <?php if ($a['status'] === 'withdrawn'): ?>
+                      <span class="px-2 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">
+                        Volunteer Withdraw
+                      </span>
+                    <?php else: ?>
+                      <span class="px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                        Active
+                      </span>
+                    <?php endif; ?>
+                  </td>
                   <td class="py-2 px-4 text-center">
-                    <form method="POST" class="inline-block" onsubmit="return confirm('Remove this approved volunteer?');">
-                      <input type="hidden" name="map_id" value="<?= $a['id'] ?>">
-                      <input type="hidden" name="action" value="removed">
-                      <button class="skill-delete-btn" title="Remove volunteer" aria-label="Remove volunteer">
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </form>
+                    <?php if ($a['status'] !== 'withdrawn'): ?>
+                      <form method="POST" class="inline-block" onsubmit="return confirm('Remove this approved volunteer?');">
+                        <input type="hidden" name="map_id" value="<?= $a['id'] ?>">
+                        <input type="hidden" name="action" value="removed">
+                        <button class="skill-delete-btn" title="Remove volunteer" aria-label="Remove volunteer">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </form>
+                    <?php else: ?>
+                      <span class="text-gray-400 text-sm">Withdrawn</span>
+                    <?php endif; ?>
                   </td>
                 </tr>
               <?php endforeach; ?>
             <?php else: ?>
-              <tr><td colspan="6" class="py-4 text-center text-gray-500">No approved volunteers yet.</td></tr>
+              <tr><td colspan="7" class="py-4 text-center text-gray-500">No approved volunteers yet.</td></tr>
             <?php endif; ?>
           </tbody>
         </table>

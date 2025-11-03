@@ -2,6 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: /Charitybridge2/index.html");
+header("Location: auth/login.html");
 exit();
 ?>

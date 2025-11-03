@@ -16,17 +16,42 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name       = $_POST['name'];
     $email      = $_POST['email'];
-    $password   = md5($_POST['password']);  // store hashed password
-    $confirm_password = md5($_POST['confirm_password']);
+    $plain_password = $_POST['password'];
+    $plain_confirm_password = $_POST['confirm_password'];
     $phone      = $_POST['phone'];
     $address    = $_POST['address'];
     $city       = $_POST['city'];
 
     // Check if passwords match
-    if ($password !== $confirm_password) {
+    if ($plain_password !== $plain_confirm_password) {
         echo "❌ Passwords do not match!";
         exit();
     }
+    
+    // Password strength validation
+    if (strlen($plain_password) < 8) {
+        echo "❌ Password must be at least 8 characters long.";
+        exit();
+    }
+    if (!preg_match('/[A-Z]/', $plain_password)) {
+        echo "❌ Password must contain at least one uppercase letter.";
+        exit();
+    }
+    if (!preg_match('/[a-z]/', $plain_password)) {
+        echo "❌ Password must contain at least one lowercase letter.";
+        exit();
+    }
+    if (!preg_match('/[0-9]/', $plain_password)) {
+        echo "❌ Password must contain at least one number.";
+        exit();
+    }
+    if (!preg_match('/[^A-Za-z0-9]/', $plain_password)) {
+        echo "❌ Password must contain at least one special character (!@#$%^&* etc.).";
+        exit();
+    }
+    
+    $password = md5($plain_password);  // store hashed password
+    $confirm_password = md5($plain_confirm_password);
 
     // Check if email already exists
     $check_email_stmt = $conn->prepare("SELECT donor_id FROM donors WHERE email = ?");

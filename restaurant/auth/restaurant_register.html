@@ -8,45 +8,52 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../../css/style.css" />
   </head>
   <body class="bg-light-color text-text-dark">
     <!-- Header -->
-    <header class="bg-white shadow-md py-4 px-6">
-      <div class="container mx-auto flex justify-between items-center">
-        <a href="../../index.html" class="text-3xl font-bold text-primary-color">
-          CharityBridge
-        </a>
-        <nav class="space-x-6">
-          <a href="../../index.html" class="text-gray-600 hover:text-primary-color">
-            Home
-          </a>
-          <a href="restaurant_login.html" class="text-gray-600 hover:text-primary-color">
-            Login
-          </a>
-          <a href="restaurant_register.html" class="btn btn-primary">Register</a>
+    <header>
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="../../index.html" class="text-3xl font-bold text-primary-color">CharityBridge</a>
+        <nav class="hidden md:flex">
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../login.html">Login</a></li>
+            <li><a href="../../register.html" class="btn btn-primary">Register</a></li>
+          </ul>
         </nav>
       </div>
     </header>
 
-    <!-- Hero Section - Minimal -->
-    <section class="bg-primary-color text-white py-6">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="text-2xl font-bold mb-2">Join as a Restaurant Partner</h1>
-                <p class="text-sm opacity-90">Help reduce food waste and support your community</p>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary-color via-secondary-color to-accent-color text-white py-16">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Join as<br>
+                    <span class="text-yellow-300">Restaurant Partner</span>
+                </h1>
+                <p class="text-lg md:text-xl opacity-95">
+                    Help reduce food waste and support your community
+                </p>
             </div>
         </div>
     </section>
 
     <!-- Restaurant Registration Form -->
-    <section class="py-8 bg-light-color">
+    <section class="py-20 bg-light-color">
       <div class="container mx-auto px-6">
         <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-6">
-            <h2 class="text-xl font-bold text-primary-color mb-2">Restaurant Registration</h2>
-            <p class="text-sm text-gray-600">Complete the form below to start donating surplus food</p>
-          </div>
+          <div class="form-container">
+            <div class="text-center mb-8">
+              <div class="w-20 h-20 bg-gradient-to-br from-accent-color to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-utensils text-white text-3xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary-color">Create Restaurant Account</h2>
+              <p class="text-gray-600 mt-2">Join our community of changemakers</p>
+            </div>
 
           <!-- Display server-side error message -->
           <?php if (isset($_GET['error'])): ?>
@@ -240,24 +247,24 @@
               Register Restaurant
             </button>
           </form>
-
-          <!-- Already have an account -->
-          <p class="text-center text-gray-600 text-sm mt-6">
-            Already have an account?
-            <a
-              href="restaurant_login.html"
-              class="text-primary-color hover:underline font-semibold"
-            >
-              Login here
-            </a>.
-          </p>
+          
+          <div class="text-center mt-8 pt-6 border-t border-gray-200">
+            <p class="text-gray-600 mb-4">Already have an account?</p>
+            <a href="restaurant_login.html" class="btn bg-gray-100 text-gray-700 hover:bg-gray-200 w-full">
+              <i class="fas fa-sign-in-alt mr-2"></i>
+              Sign In to Restaurant Portal
+            </a>
+          </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark-color text-white py-6 text-center">
-      <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 CharityBridge. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="../../js/restaurant.js"></script>

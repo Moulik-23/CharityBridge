@@ -233,6 +233,10 @@ $conn->close();
                     <button class="w-full btn btn-danger mt-3 cursor-not-allowed" disabled>
                       ❌ Rejected
                     </button>
+                <?php elseif ($current_status === 'withdrawn'): ?>
+                    <button class="w-full btn bg-orange-500 text-white mt-3 cursor-not-allowed" disabled>
+                      🚫 Withdraw
+                    </button>
                 <?php else: ?>
                     <button class="w-full btn btn-secondary mt-3 cursor-not-allowed" disabled>
                       Applied (<?= htmlspecialchars($current_status) ?>)
@@ -288,6 +292,10 @@ $conn->close();
               <?php elseif ($app['status'] === 'rejected'): ?>
                 <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold">
                   ❌ Rejected
+                </span>
+              <?php elseif ($app['status'] === 'withdrawn'): ?>
+                <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold">
+                  🚫 Withdraw
                 </span>
               <?php else: ?>
                 <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">

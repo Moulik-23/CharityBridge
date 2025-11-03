@@ -8,6 +8,7 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../../css/style.css" />
   </head>
   <body class="bg-light-color text-text-dark">
@@ -25,24 +26,34 @@
       </div>
     </header>
 
-    <!-- Hero Section - Minimal -->
-    <section class="bg-primary-color text-white py-6">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="text-2xl font-bold mb-2">Register Your NGO Organization</h1>
-                <p class="text-sm opacity-90">Join our platform and connect with donors, volunteers, and resources</p>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary-color via-secondary-color to-accent-color text-white py-16">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Register as<br>
+                    <span class="text-yellow-300">NGO Partner</span>
+                </h1>
+                <p class="text-lg md:text-xl opacity-95">
+                    Join our platform and connect with donors, volunteers, and resources
+                </p>
             </div>
         </div>
     </section>
 
     <!-- NGO Registration Form -->
-    <section class="py-8 bg-light-color">
+    <section class="py-20 bg-light-color">
       <div class="container">
         <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-6">
-            <h2 class="text-xl font-bold text-primary-color mb-2">Organization Registration</h2>
-            <p class="text-sm text-gray-600">Complete the form below to register your NGO</p>
-          </div>
+          <div class="form-container">
+            <div class="text-center mb-8">
+              <div class="w-20 h-20 bg-gradient-to-br from-secondary-color to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-hands-helping text-white text-3xl"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-primary-color">Create NGO Account</h2>
+              <p class="text-gray-600 mt-2">Join our community of changemakers</p>
+            </div>
 
           <!-- Form -->
           <form
@@ -175,8 +186,7 @@
                     type="text"
                     name="darpan_id"
                     id="darpan_id"
-                    placeholder="e.g., GJ20201234567"
-                    maxlength="13"
+                    placeholder="e.g., GJ/2020/1234567"
                     style="text-transform: uppercase;"
                     required
                   />
@@ -275,16 +285,15 @@
               Register Organization
             </button>
           </form>
-
-          <!-- Already have an account -->
-          <p class="text-center text-gray-600 text-sm mt-6">
-            Already have an account?
-            <a
-              href="login.html"
-              class="text-primary-color hover:underline font-semibold"
-              >Login here</a
-            >.
-          </p>
+          
+          <div class="text-center mt-8 pt-6 border-t border-gray-200">
+            <p class="text-gray-600 mb-4">Already have an account?</p>
+            <a href="login.php" class="btn bg-gray-100 text-gray-700 hover:bg-gray-200 w-full">
+              <i class="fas fa-sign-in-alt mr-2"></i>
+              Sign In to NGO Portal
+            </a>
+          </div>
+          </div>
         </div>
       </div>
     </section>

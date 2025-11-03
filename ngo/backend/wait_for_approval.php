@@ -14,7 +14,7 @@
       Your NGO has been registered successfully.  
       Please wait until the <strong>Admin approves</strong> your request.
     </p>
-    <a href="/charitybridge/index.html" 
+    <a href="../../index.html" 
        class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
        Back to Home
     </a>

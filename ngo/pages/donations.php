@@ -137,11 +137,11 @@ $conn->close();
         <p class="text-gray-600 mb-6">Choose the type of donations you want to manage.</p>
         
         <div class="flex flex-col sm:flex-row gap-4">
-            <button id="goodsTab" onclick="showGoodsDonations()" class="btn btn-primary flex-1 text-center py-4 px-6 text-lg">
+            <button id="goodsTab" onclick="showGoodsDonations()" class="btn bg-gray-100 text-gray-700 hover:bg-gray-200 flex-1 text-center py-4 px-6 text-lg">
                 <i class="fas fa-box mr-3"></i>
                 Goods Donations
             </button>
-            <button id="restaurantTab" onclick="showRestaurantDonations()" class="btn bg-gray-100 text-gray-700 hover:bg-gray-200 flex-1 text-center py-4 px-6 text-lg">
+            <button id="restaurantTab" onclick="showRestaurantDonations()" class="btn btn-primary flex-1 text-center py-4 px-6 text-lg">
                 <i class="fas fa-utensils mr-3"></i>
                 Restaurant Donations
             </button>
@@ -412,8 +412,8 @@ $conn->close();
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize with goods donations shown by default
-            showGoodsDonations();
+            // Initialize with restaurant donations shown by default to show food list directly
+            showRestaurantDonations();
             // Goods Donation Modal Logic
             const assignGoodsVolunteerModal = document.getElementById('assignGoodsVolunteerModal');
             const closeGoodsButton = assignGoodsVolunteerModal.querySelector('.close-button');

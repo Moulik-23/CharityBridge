@@ -316,6 +316,7 @@ header nav ul li a:hover::after {
     background: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
 }
 
 .btn:hover::before {
@@ -325,6 +326,17 @@ header nav ul li a:hover::after {
 
 .btn i {
     transition: transform var(--transition-base);
+    position: relative;
+    z-index: 2;
+}
+
+/* Ensure button text is always visible */
+.btn, .btn * {
+    position: relative;
+}
+
+.btn > * {
+    z-index: 2;
 }
 
 .btn:hover i {
@@ -411,6 +423,7 @@ header nav ul li a:hover::after {
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
     opacity: 0;
     transition: opacity var(--transition-base);
+    z-index: 0;
 }
 
 .btn-primary:hover {
@@ -1990,7 +2003,33 @@ body {
 
 /* Fix button text visibility on hover */
 .btn-primary:hover { color: #ffffff !important; z-index: 1; }
-.btn-primary span, .btn-primary i { position: relative; z-index: 2; }
+.btn-primary span, .btn-primary i { position: relative; z-index: 2; color: #ffffff !important; }
 .btn-success:hover { color: #ffffff !important; }
 .btn { position: relative; }
+
+/* Ensure text in header register button is always visible */
+header nav ul li a.btn-primary,
+header nav ul li a.btn-primary:hover,
+header nav ul li a.btn-primary:active,
+header nav ul li a.btn-primary:focus { 
+    color: #ffffff !important; 
+}
+header nav ul li a.btn-primary *,
+header nav ul li a.btn-primary:hover *,
+header nav ul li a.btn-primary:active *,
+header nav ul li a.btn-primary:focus * { 
+    color: #ffffff !important; 
+    position: relative; 
+    z-index: 2; 
+}
+
+/* Override any text color in buttons */
+.btn-primary, .btn-primary:hover, .btn-primary:active {
+    color: #ffffff !important;
+}
+
+.btn-primary span, .btn-primary i,
+.btn-primary:hover span, .btn-primary:hover i {
+    color: #ffffff !important;
+}
 

@@ -17,7 +17,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name       = $_POST['name'];
     $email      = $_POST['email'];
     $phone      = $_POST['mobile'];
-    $password   = md5($_POST['password']);  // store hashed password
+    $plain_password = $_POST['password'];
+    
+    // Password strength validation
+    if (strlen($plain_password) < 8) {
+        die("❌ Password must be at least 8 characters long.");
+    }
+    if (!preg_match('/[A-Z]/', $plain_password)) {
+        die("❌ Password must contain at least one uppercase letter.");
+    }
+    if (!preg_match('/[a-z]/', $plain_password)) {
+        die("❌ Password must contain at least one lowercase letter.");
+    }
+    if (!preg_match('/[0-9]/', $plain_password)) {
+        die("❌ Password must contain at least one number.");
+    }
+    if (!preg_match('/[^A-Za-z0-9]/', $plain_password)) {
+        die("❌ Password must contain at least one special character (!@#$%^&* etc.).");
+    }
+    
+    $password   = md5($plain_password);  // store hashed password
     $org_pan    = $_POST['org_pan'];
     $reg_number = $_POST['reg_number'];
     $ngo_type   = $_POST['ngo_type'];
