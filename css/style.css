@@ -105,6 +105,42 @@ section {
     z-index: 2;
 }
 
+/* Ensure hero section text is white and visible - override global h1 styles */
+section.hero-section h1,
+section.hero-section h1 span,
+.hero-section h1,
+.hero-section h1 span,
+.hero-section .text-white h1,
+.hero-section .text-white h1 span,
+.hero-section .fade-in h1,
+.hero-section .fade-in h1 span,
+section.hero-section .text-white h1,
+section.hero-section .text-white h1 span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
+/* More specific override for hero section h1 to prevent gradient */
+section.hero-section h1 {
+    background-image: none !important;
+    background: transparent !important;
+}
+
+/* Ensure auth-hero section text is white and visible */
+section.auth-hero h1,
+.auth-hero h1,
+.auth-hero .text-white h1,
+.auth-hero .fade-in h1 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
 /* Decorative elements should stay within hero section */
 .hero-section .absolute,
 .auth-hero .absolute {
@@ -429,6 +465,7 @@ header nav ul li a:hover::after {
 .btn-primary:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 24px 48px -12px rgba(15, 98, 254, 0.4);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%) !important;
 }
 
 .btn-primary:hover::after {
@@ -2013,7 +2050,13 @@ header nav ul li a.btn-primary:hover,
 header nav ul li a.btn-primary:active,
 header nav ul li a.btn-primary:focus { 
     color: #ffffff !important; 
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
 }
+
+header nav ul li a.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%) !important;
+}
+
 header nav ul li a.btn-primary *,
 header nav ul li a.btn-primary:hover *,
 header nav ul li a.btn-primary:active *,

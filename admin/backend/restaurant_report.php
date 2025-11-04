@@ -69,10 +69,27 @@ if (!$rest) { die('Restaurant not found'); }
       </div>
     </div>
 
-    <?php $docFile = $rest['license_document'] ?? ''; if ($docFile && ctype_print($docFile) && strpos($docFile,'.') !== false): ?>
+    <?php 
+    $docFile = $rest['license_document'] ?? ''; 
+    if ($docFile && ctype_print($docFile) && strpos($docFile,'.') !== false): 
+        $ext = strtolower(pathinfo($docFile, PATHINFO_EXTENSION));
+        $docPath = '../../restaurant/backend/licenses/' . rawurlencode($docFile);
+    ?>
     <div class="mt-6">
       <p class="text-sm text-gray-500 mb-2">License Document</p>
-      <img src="<?php echo '../../restaurant/pge/uploads/'.rawurlencode($docFile); ?>" alt="License Document" class="max-h-96 border rounded" />
+      <?php if (in_array($ext, ['png', 'jpg', 'jpeg', 'gif', 'webp'])): ?>
+        <img src="<?php echo $docPath; ?>" alt="License Document" class="max-h-96 border rounded" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <div style="display:none;" class="p-4 border rounded bg-gray-100">
+          <p class="text-gray-600">Image could not be loaded. <a href="<?php echo $docPath; ?>" target="_blank" class="text-primary-color underline">Download Document</a></p>
+        </div>
+      <?php else: ?>
+        <div class="p-4 border rounded bg-gray-100">
+          <p class="text-gray-600 mb-2">License Document (<?php echo strtoupper($ext); ?>)</p>
+          <a href="<?php echo $docPath; ?>" target="_blank" class="text-primary-color underline inline-flex items-center">
+            <i class="fas fa-file-download mr-2"></i>Download/View Document
+          </a>
+        </div>
+      <?php endif; ?>
     </div>
     <?php endif; ?>
   </div>

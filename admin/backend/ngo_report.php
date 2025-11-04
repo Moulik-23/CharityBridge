@@ -38,6 +38,7 @@ if (!$ngo) { die('NGO not found'); }
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NGO Report - <?php echo htmlspecialchars($ngo['name']); ?></title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bg-gray-100">
   <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-8 my-8">
@@ -122,14 +123,47 @@ if (!$ngo) { die('NGO not found'); }
       </div>
     </div>
 
-    <?php $certFile = $ngo['certificate'] ?? ''; if ($certFile && ctype_print($certFile) && strpos($certFile,'.') !== false): ?>
+    <?php 
+    $certFile = $ngo['certificate'] ?? ''; 
+    if ($certFile && !empty(trim($certFile)) && strpos($certFile,'.') !== false): 
+        $ext = strtolower(pathinfo($certFile, PATHINFO_EXTENSION));
+        $certPath = '../../ngo/certificates/' . rawurlencode($certFile);
+        $absolutePath = __DIR__ . '/../../ngo/certificates/' . $certFile;
+        $fileExists = file_exists($absolutePath);
+    ?>
     <div class="mt-6">
       <p class="text-sm text-gray-500 mb-2">Certificate</p>
-      <?php $ext = strtolower(pathinfo($certFile, PATHINFO_EXTENSION)); if (in_array($ext,['png','jpg','jpeg','gif','webp'])): ?>
-        <img src="<?php echo '../../ngo/certificates/'.rawurlencode($certFile); ?>" alt="Certificate" class="max-h-96 border rounded" />
+      <?php if ($fileExists && in_array($ext, ['png', 'jpg', 'jpeg', 'gif', 'webp'])): ?>
+        <img src="<?php echo $certPath; ?>" alt="Certificate" class="max-w-full max-h-96 border rounded" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <div style="display:none;" class="p-4 border rounded bg-gray-100">
+          <p class="text-gray-600 mb-2">Image could not be loaded.</p>
+          <a href="<?php echo $certPath; ?>" target="_blank" class="text-blue-600 hover:text-blue-800 underline inline-flex items-center">
+            <i class="fas fa-file-download mr-2"></i>Download Certificate
+          </a>
+        </div>
+      <?php elseif ($fileExists): ?>
+        <div class="p-4 border rounded bg-gray-100">
+          <p class="text-gray-600 mb-2">Certificate (<?php echo strtoupper($ext); ?>)</p>
+          <a href="<?php echo $certPath; ?>" target="_blank" class="text-blue-600 hover:text-blue-800 underline inline-flex items-center">
+            <i class="fas fa-file-download mr-2"></i>Download/View Certificate
+          </a>
+        </div>
       <?php else: ?>
-        <a href="<?php echo '../../ngo/certificates/'.rawurlencode($certFile); ?>" target="_blank" class="text-primary-color underline">Open Certificate</a>
+        <div class="p-4 border rounded bg-yellow-50 border-yellow-200">
+          <p class="text-yellow-800 mb-2">
+            <i class="fas fa-exclamation-triangle mr-2"></i>Certificate file not found: <?php echo htmlspecialchars($certFile); ?>
+          </p>
+          <p class="text-sm text-yellow-700">Expected path: <?php echo htmlspecialchars($certPath); ?></p>
+        </div>
       <?php endif; ?>
+    </div>
+    <?php elseif (!empty($certFile)): ?>
+    <div class="mt-6">
+      <div class="p-4 border rounded bg-yellow-50 border-yellow-200">
+        <p class="text-yellow-800">
+          <i class="fas fa-exclamation-triangle mr-2"></i>Certificate filename is invalid: <?php echo htmlspecialchars($certFile); ?>
+        </p>
+      </div>
     </div>
     <?php endif; ?>
   </div>

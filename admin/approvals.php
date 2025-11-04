@@ -92,13 +92,15 @@
                           <i class='fas fa-file-alt mr-2'></i>View Report
                         </a>
                       </td>
-                      <td class='py-2 px-4 text-center'>
-                              <button onclick="approveNgo(<?php echo $row['id']; ?>, document.getElementById('ngo-row-<?php echo $row['id']; ?>'))" class='btn btn-success btn-sm'>
-                                <i class='fas fa-check mr-2'></i>Approve
-                              </button>
-                              <button onclick="rejectNgo(<?php echo $row['id']; ?>, document.getElementById('ngo-row-<?php echo $row['id']; ?>'))" class='btn btn-danger btn-sm ml-2'>
-                                <i class='fas fa-times mr-2'></i>Reject
-                              </button>
+                      <td class='py-2 px-4'>
+                              <div class='flex items-center justify-center gap-2'>
+                                <button onclick="approveNgo(<?php echo $row['id']; ?>, document.getElementById('ngo-row-<?php echo $row['id']; ?>'))" class='btn btn-success btn-sm'>
+                                  <i class='fas fa-check mr-2'></i>Approve
+                                </button>
+                                <button onclick="rejectNgo(<?php echo $row['id']; ?>, document.getElementById('ngo-row-<?php echo $row['id']; ?>'))" class='btn btn-danger btn-sm'>
+                                  <i class='fas fa-times mr-2'></i>Reject
+                                </button>
+                              </div>
                             </td>
                     </tr>
               <?php
@@ -157,13 +159,15 @@
                     echo "<td class='py-2 px-4'>{$row_restaurant['fssai_license']}</td>";
                     echo "<td class='py-2 px-4'>{$row_restaurant['created_at']}</td>";
                     echo "<td class='py-2 px-4'><a href='backend/restaurant_report.php?id={$row_restaurant['id']}' class='btn btn-primary btn-sm inline-flex items-center'><i class='fas fa-file-alt mr-2'></i>View Report</a></td>";
-                    echo "<td class='py-2 px-4 text-center'>
-                            <button onclick=\"approveRestaurant({$row_restaurant['id']}, document.getElementById('restaurant-row-{$row_restaurant['id']}'))\" class='btn btn-success btn-sm'>
-                              <i class='fas fa-check mr-2'></i>Approve
-                            </button>
-                            <button onclick=\"rejectRestaurant({$row_restaurant['id']}, document.getElementById('restaurant-row-{$row_restaurant['id']}'))\" class='btn btn-danger btn-sm ml-2'>
-                              <i class='fas fa-times mr-2'></i>Reject
-                            </button>
+                    echo "<td class='py-2 px-4'>
+                            <div class='flex items-center justify-center gap-2'>
+                              <button onclick=\"approveRestaurant({$row_restaurant['id']}, document.getElementById('restaurant-row-{$row_restaurant['id']}'))\" class='btn btn-success btn-sm'>
+                                <i class='fas fa-check mr-2'></i>Approve
+                              </button>
+                              <button onclick=\"rejectRestaurant({$row_restaurant['id']}, document.getElementById('restaurant-row-{$row_restaurant['id']}'))\" class='btn btn-danger btn-sm'>
+                                <i class='fas fa-times mr-2'></i>Reject
+                              </button>
+                            </div>
                           </td>";
                     echo "</tr>";
                   }

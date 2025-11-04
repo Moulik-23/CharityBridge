@@ -36,6 +36,44 @@ function rejectNgo(id, rowElement) {
     .catch(err => console.error(err));
 }
 
+function approveRestaurant(id, rowElement) {
+    console.log('Attempting to approve Restaurant with ID:', id);
+    fetch("backend/approve_restaurant.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `id=${id}`
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        if (data.success && rowElement) {
+            rowElement.remove();
+        }
+    })
+    .catch(err => console.error(err));
+}
+
+function rejectRestaurant(id, rowElement) {
+    console.log('Attempting to reject Restaurant with ID:', id);
+    fetch("backend/reject_restaurant.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `id=${id}`
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        if (data.success && rowElement) {
+            rowElement.remove();
+        }
+    })
+    .catch(err => console.error(err));
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Admin Login functionality
     const adminLoginForm = document.querySelector('form');
